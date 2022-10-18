@@ -88,5 +88,5 @@ buildNumber.properties
 *.png
 #HTMLReports
 *.html
-pom.xml
+/pom.xml
 /target
