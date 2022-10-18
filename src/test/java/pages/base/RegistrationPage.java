@@ -32,17 +32,21 @@ public class RegistrationPage {
     @FindBy(id = "strengthBar")
     public WebElement passwordStrength;
 
-    @FindBy(xpath = "(//li[contains(@style,'background-color: rgb(255, 0, 0);')]")
+    @FindBy(xpath = "//*[@id='strengthBar']/li[1]")
     public WebElement redStrengthBar;
 
-    @FindBy(xpath = "(//li[contains(@style,'background-color: rgb(255, 153, 0);')]")
+
+    @FindBy(xpath = "//*[@id='strengthBar']/li[2]")
     public WebElement orangeStrengthBar;
 
-    @FindBy(xpath = "(//li[contains(@style,'background-color: rgb(153, 255, 0);')]")
+
+    @FindBy(xpath = "//*[@id='strengthBar']/li[4]")
     public WebElement fourGreenStrengthBar;
 
-    @FindBy(xpath = "(//li[contains(@style,'background-color: rgb(0, 255, 0);')]")
+
+    @FindBy(xpath = "//*[@id='strengthBar']/li[5]")
     public WebElement fullGreenStrengthBar;
+
 
     @FindBy(id = "secondPassword")
     public WebElement confirmPassword;
@@ -52,4 +56,7 @@ public class RegistrationPage {
 
     @FindBy(className = "Toastify")
     public WebElement alert;
+
+    @FindBy(xpath = "//span[text()='Registration']")
+    public WebElement registrationText;
 }

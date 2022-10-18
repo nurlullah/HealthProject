@@ -32,6 +32,12 @@ public class HomePage {
     @FindBy(css = "#account-menu")//signin olmak ve sonrasında acoount işlemleri için
     public WebElement signInAndAccountIcon;
 
+//    @FindBy(xpath = "//span[text()='Fatih Sakin']")
+//    public WebElement trueSignIn;
+//
+//    @FindBy(xpath = "//strong[text()='Failed to sign in!']")
+//    public WebElement failedToSignInText;
+
     @FindBy(id = "login-item")
     public WebElement signIn;
 
