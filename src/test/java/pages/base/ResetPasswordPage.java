@@ -18,4 +18,7 @@ public class ResetPasswordPage {
 
     @FindBy(className = "Toastify")//forget password e basınca çıkıyor
     public WebElement resetPasswordAlert;
+
+
+
 }

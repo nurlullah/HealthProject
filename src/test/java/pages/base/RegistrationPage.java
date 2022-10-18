@@ -52,4 +52,7 @@ public class RegistrationPage {
 
     @FindBy(className = "Toastify")
     public WebElement alert;
+
+    @FindBy(css = "#register-title > span")
+    public WebElement registrationText;
 }
