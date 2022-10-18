@@ -1,4 +1,4 @@
-package pojos.baseurl;
+package baseurl;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
