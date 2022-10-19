@@ -90,9 +90,9 @@ public class UsernameStepDefs {
 
 
     }
-    @When("Enter any any chars on the username")
-    public void enter_any_any_chars_on_the_username() {
-        registrationPage.userName.sendKeys();
+    @When("Enter any chars on the username")
+    public void enter_any_chars_on_the_username() {
+
 
     }
     @Then("Verify Your username is required. is not displayed")

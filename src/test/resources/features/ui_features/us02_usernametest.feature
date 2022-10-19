@@ -16,5 +16,5 @@ Scenario: US02_Username_Test
     And Enter Last Name
     And Click on the username box and click  Enter
     Then Verify Your username is required.
-    When Enter any any chars on the username
+    When Enter any chars on the username
     Then Verify Your username is required. is not displayed
