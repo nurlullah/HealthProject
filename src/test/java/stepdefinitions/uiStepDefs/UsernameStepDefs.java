@@ -2,8 +2,7 @@ package stepdefinitions.uiStepDefs;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.*;
-import org.testng.Assert;
-import org.testng.asserts.SoftAssert;
+import org.junit.Assert;
 import pages.base.HomePage;
 import pages.base.RegistrationPage;
 import utilities.ConfigReader;
