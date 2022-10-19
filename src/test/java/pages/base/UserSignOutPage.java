@@ -10,9 +10,6 @@ public class UserSignOutPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-//    @FindBy(css = "a[href='/logout']")
-//    public WebElement signOutLink;
-
 
     @FindBy(xpath = "//span[text()='Sign out']")
     public WebElement signOut;
