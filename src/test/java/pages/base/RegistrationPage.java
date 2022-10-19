@@ -23,6 +23,9 @@ public class RegistrationPage {
     @FindBy(id = "username")
     public WebElement userName;
 
+    @FindBy(xpath = "//*[@id='register-form']/div[4]/div")
+    public WebElement userNameVerifyText;
+
     @FindBy(id = "email")
     public WebElement email;
 
