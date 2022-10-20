@@ -4,11 +4,11 @@ Feature: US03_Registration_page_strength_password
   Background: user_goes_to_medunna_registration_page
     Given User goes to the medunna url
     When User clicks the sign in symbol and register dropdown button
-    Then User enters ssn id
-    And User enters first name
-    And User enters last name
-    And User enters username
-    And User enters email
+    Then User enters ssn "ssn"
+    And User enters firstname "firstName"
+    And User enters lastname "lastName"
+    And User enters username "login"
+    And User enters email "email"
 
 
   @us03_tc01
@@ -17,6 +17,7 @@ Feature: US03_Registration_page_strength_password
     Then User verifies password chart red color is "1"
     And User enters the confirm "<confirmPassword>"
     And User clicks the register button
+    Then verify the Registration Saved text
     And User closes the application
     Examples:
       | password |confirmPassword|

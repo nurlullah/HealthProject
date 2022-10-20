@@ -1,6 +1,7 @@
 package stepdefinitions.uiStepDefs;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,12 +10,13 @@ import pages.base.HomePage;
 import pages.base.RegistrationPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+
 import utilities.JSUtils;
 
 public class US03_RegistrationPagePassword {
 
     HomePage homePage=new HomePage();
-    RegistrationPage registrationDropdown=new RegistrationPage();
+    RegistrationPage registrationPage =new RegistrationPage();
 
     @Given("User goes to the medunna url")
     public void user_goes_to_the_medunna_url() {
@@ -26,37 +28,44 @@ public class US03_RegistrationPagePassword {
         Driver.wait(1);
         homePage.register.click();
     }
-    @Then("User enters ssn id")
-    public void user_enters_ssn_id() {
-        registrationDropdown.ssn.sendKeys(Faker.instance().number().digits(3)+"-"+Faker.instance().number().digits(2)+"-"+Faker.instance().number().digits(4));
-        Driver.wait(1);
-    }
-    @Then("User enters first name")
-    public void user_enters_first_name() {
-        registrationDropdown.firstName.sendKeys(Faker.instance().name().firstName());
-        Driver.wait(1);
-    }
-    @Then("User enters last name")
-    public void user_enters_last_name() {
-        registrationDropdown.lastName.sendKeys(Faker.instance().name().lastName());
-        Driver.wait(1);
-    }
-    @Then("User enters username")
-    public void user_enters_username() {
-        registrationDropdown.userName.sendKeys(Faker.instance().name().username());
-        Driver.wait(1);
-    }
-    @Then("User enters email")
-    public void user_enters_email() {
-        registrationDropdown.email.sendKeys(Faker.instance().internet().emailAddress());
-        Driver.wait(2);
+    @Then("User enters ssn {string}")
+    public void userEntersSsn(String ssn) {
+        Driver.sleep(1000);
+      registrationPage.ssn.sendKeys(Faker.instance().idNumber().ssnValid());
     }
 
+    @And("User enters firstname {string}")
+    public void userEntersFirstname(String firstName) {
+        Driver.sleep(1000);
+       registrationPage.firstName.sendKeys(Faker.instance().name().firstName());
+
+    }
+
+    @And("User enters lastname {string}")
+    public void userEntersLastname(String lastName) {
+        registrationPage.lastName.sendKeys(Faker.instance().name().lastName());
+
+    }
+
+    @And("User enters username {string}")
+    public void userEntersUsername(String username) {
+        Driver.sleep(1000);
+       registrationPage.userName.sendKeys(Faker.instance().name().username());
+    }
+
+
+
+    @And("User enters email {string}")
+    public void userEntersEmail(String email) {
+        Driver.sleep(1000);
+        registrationPage.email.sendKeys(Faker.instance().internet().emailAddress());
+    }
 
     @Given("User enters four chars password {string}")
     public void user_enters_four_chars_password(String password) {
+
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationDropdown.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword,password,5);
 
     }
 
@@ -69,8 +78,9 @@ public class US03_RegistrationPagePassword {
 
     @Given("user enters seven chars that possibilities with two combination {string}")
     public void user_enters_seven_chars_that_possibilities_with_two_combination(String password) {
+
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationDropdown.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword,password,5);
 
     }
     @Then("User verifies password chart orange color is {string}")
@@ -81,7 +91,7 @@ public class US03_RegistrationPagePassword {
     @Given("user enters seven chars that possibilities with three combinations {string}")
     public void user_enters_seven_chars_that_possibilities_with_three_combinations(String password) {
         Driver.sleep(1000);
-        Driver.waitAndSendText( registrationDropdown.newPassword,password,5);
+        Driver.waitAndSendText( registrationPage.newPassword,password,5);
     }
     @Then("User verifies password with four chart green color is {string}")
     public void user_verifies_password_with_four_chart_green_color_is(String level) {
@@ -91,7 +101,7 @@ public class US03_RegistrationPagePassword {
     @Given("User enters seven chars that possibilities with four combinations {string}")
     public void user_enters_seven_chars_that_possibilities_with_four_combinations(String password) {
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationDropdown.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword,password,5);
 
     }
     @Then("User verifies password with four chart green color with five bar is {string}")
@@ -103,14 +113,15 @@ public class US03_RegistrationPagePassword {
     @Then("User enters the confirm {string}")
     public void user_enters_the_confirm(String confirmPassword) {
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationDropdown.confirmPassword,confirmPassword,5);
+        Driver.waitAndSendText(registrationPage.confirmPassword,confirmPassword,5);
 
     }
+
 
     @Given("User types into password {string}")
     public void user_types_into_password(String strengthPassword) {
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationDropdown.newPassword,strengthPassword,5);
+        Driver.waitAndSendText(registrationPage.newPassword,strengthPassword,5);
 
     }
     @Then("User confirms the password strength {string}")
@@ -121,8 +132,15 @@ public class US03_RegistrationPagePassword {
     //Register button
     @Then("User clicks the register button")
     public void user_clicks_the_register_button() {
-        JSUtils.clickElementByJS(registrationDropdown.registerButton);
+        JSUtils.clickElementByJS(registrationPage.registerButton);
         Driver.wait(1);
+        //FileWriterForData class ını kullanarak datalarımızı pojodaki tüm bilgilerle kaydetmiş oluyoruz
+        //saveData(registrationPojo); sadece bu şekilde import ederek de kullanbiliriz. çünkü method static
+        //FileWriterForData.saveData(registrationPojo);
+    }
+    @Then("verify the Registration Saved text")
+    public void verifyTheRegistrationSavedText() {
+        Assert.assertTrue(registrationPage.registrationText.isDisplayed());
     }
 
     //close the app
@@ -135,18 +153,17 @@ public class US03_RegistrationPagePassword {
     public void colorStrength(String level){
 
         if (1== Integer.parseInt(level)){
-            Assert.assertTrue(registrationDropdown.redStrengthBar.isDisplayed());
+            Assert.assertTrue(registrationPage.redStrengthBar.isDisplayed());
             Driver.wait(1);
         } else if (2==Integer.parseInt(level)) {
-            Assert.assertTrue(registrationDropdown.orangeStrengthBar.isDisplayed());
+            Assert.assertTrue(registrationPage.orangeStrengthBar.isDisplayed());
             Driver.wait(1);
         }else if (3==Integer.parseInt(level)){
-            Assert.assertTrue(registrationDropdown.fourGreenStrengthBar.isDisplayed());
+            Assert.assertTrue(registrationPage.fourGreenStrengthBar.isDisplayed());
             Driver.wait(1);
         } else if (4==Integer.parseInt(level)) {
-            Assert.assertTrue(registrationDropdown.fullGreenStrengthBar.isDisplayed());
+            Assert.assertTrue(registrationPage.fullGreenStrengthBar.isDisplayed());
         }
     }
-
 
 }
