@@ -10,11 +10,15 @@ public class AdminHomePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "//span[.='Items&Titles']")//adminde gözüküyor
-    public WebElement itemsTitlesButton;
 
     @FindBy(xpath = "//span[.='Administration']")//adminde gözüküyor
     public WebElement administrationButton;
+
+    @FindBy(xpath ="//span[.='User management']")
+    public WebElement userManagementPage;
+
+    @FindBy(xpath = "//span[.='Items&Titles']")//adminde gözüküyor
+    public WebElement itemsTitlesButton;
 
     @FindBy(xpath = "//*[@href='/patient']")
     public WebElement patientButton;
@@ -42,4 +46,5 @@ public class AdminHomePage {
 
     @FindBy(css = "a[href='/c-message']")
     public WebElement messageButton;
+
 }

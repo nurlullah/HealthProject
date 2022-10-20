@@ -32,6 +32,21 @@ public class HomePage {
     @FindBy(css = "#account-menu")//signin olmak ve sonrasında acoount işlemleri için
     public WebElement signInAndAccountIcon;
 
+    //Sıradaki 3 locator signIn olduktan sonra çıkan locaterlar
+    @FindBy(css = "a[href='/account/settings']")
+    public WebElement settingsLink;
+
+
+
+    @FindBy(xpath = "//span[text()='Sign out']")
+    public WebElement signOut;
+
+    @FindBy(xpath = "//span[text()='Fatih Sakin']")
+    public WebElement trueSignIn;
+
+    @FindBy(xpath = "//strong[text()='Failed to sign in!']")
+    public WebElement failedToSignInText;
+
     @FindBy(id = "login-item")
     public WebElement signIn;
 
@@ -49,20 +64,45 @@ public class HomePage {
     @FindBy(id = "firstName")
     public WebElement firstName;
 
+    @FindBy(xpath = "//div[text()='Your FirstName is required.']")
+    public WebElement requiredFirstName;
+
     @FindBy(id = "lastName")
     public WebElement lastName;
+
+    @FindBy(xpath = "//div[text()='Your LastName is required.']")
+    public WebElement requiredLastName;
 
     @FindBy(id = "ssn")
     public WebElement ssn;
 
+    @FindBy(xpath = "//div[text()='Your SSN is invalid']")
+    public WebElement invalidSsnAlert;
+
     @FindBy(id = "email")
     public WebElement email;
+
+    @FindBy(xpath = "//div[text()='Your email is required.']")
+    public WebElement requiredEmail;
 
     @FindBy(id = "phone")
     public WebElement phoneNumber;
 
+    @FindBy(xpath = "//div[text()='Phone number is required.']")
+    public WebElement requiredPhoneNumber;
+
     @FindBy(id = "appoDate")
     public WebElement appointmentDateTime;
+
+    @FindBy(css = "span[style='color: red; font-size: 12px; border-color: red;']")
+    public WebElement pastAppointmentTime;
+
+    @FindBy(xpath = "//span[.='Send an Appointment Request']")
+    public WebElement sendAnAppointmentRequest;
+
+    //pop-up
+    @FindBy(xpath = "//strong[.='Appointment registration saved!']")
+    public WebElement AppointmentRegistrationSavedPopUp;
 
     @FindBy(id = "register-submit")
     public WebElement sendAppointmentRequest;
@@ -88,4 +128,6 @@ public class HomePage {
 
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement signInSubmitButton;
+
+
 }
