@@ -18,3 +18,6 @@ Scenario: US02_Username_Test
     Then Verify Your username is required.
     When Enter any chars on the username
     Then Verify Your username is required. is not displayed
+
+
+
