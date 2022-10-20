@@ -10,10 +10,6 @@ public class UserSignOutPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
-    @FindBy(xpath = "//span[text()='Sign out']")
-    public WebElement signOut;
-
     @FindBy(xpath = "//h2[text()='THANK YOU FOR CHOOSING US...']")
     public WebElement thankYouForChoosingUsText;
 }

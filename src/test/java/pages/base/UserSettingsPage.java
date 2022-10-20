@@ -9,8 +9,6 @@ public class UserSettingsPage {
     public UserSettingsPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy(css = "a[href='/account/settings']")
-    public WebElement settingsLink;
 
     @FindBy(css = "input#firstName']")
     public WebElement firstNameBox;
