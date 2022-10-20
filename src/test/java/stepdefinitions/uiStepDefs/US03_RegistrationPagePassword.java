@@ -149,7 +149,7 @@ public class US03_RegistrationPagePassword {
         Driver.closeDriver();
     }
 
-
+//method
     public void colorStrength(String level){
 
         if (1== Integer.parseInt(level)){
