@@ -5,12 +5,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class UserSettingsPage {
-    public UserSettingsPage() {
+public class AccountSettingsPage {
+    public AccountSettingsPage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy(css = "a[href='/account/settings']")
-    public WebElement settingsLink;
 
     @FindBy(css = "input#firstName']")
     public WebElement firstNameBox;
