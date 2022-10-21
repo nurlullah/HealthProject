@@ -47,5 +47,5 @@ public class UserPasswordPage {
     @FindBy(xpath = "//*[text()='Password changed!']")
     public WebElement successMessage;
 
-
+//
 }
