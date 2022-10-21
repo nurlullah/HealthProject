@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features/ui_features",
         glue = {"stepdefinitions","hooks"},
-        tags = "@US16_Room_Manipulation",
+        tags = "@us_03",
         dryRun = false
 )
 public class Runner {
