@@ -119,4 +119,7 @@ public class HomePage {
 
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement signInSubmitButton;
+
+    @FindBy(xpath = "//*[.='Password']")
+    public WebElement password;
 }
