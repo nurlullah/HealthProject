@@ -1,9 +1,11 @@
 package pojos;
 
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.util.Arrays;
 import java.util.Date;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Appointment {
 /*
 {
