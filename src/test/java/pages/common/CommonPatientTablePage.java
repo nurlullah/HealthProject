@@ -20,6 +20,58 @@ public class CommonPatientTablePage {
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement popUp;
 
+    //Table titles locators
+    @FindBy(xpath = "//span[text()='ID']")
+    public WebElement idColumn;
+
+    @FindBy(xpath = "//span[text()='SSN']")
+    public WebElement ssnColumn;
+
+    @FindBy(xpath = "//span[text()='First Name']")
+    public WebElement firstNameColumn;
+
+    @FindBy(xpath = "//span[text()='Last Name']")
+    public WebElement lastNameColumn;
+
+    @FindBy(xpath = "//span[text()='Birth Date']")
+    public WebElement birthDateColumn;
+
+    @FindBy(xpath = "//span[text()='Phone']")
+    public WebElement phoneColumn;
+
+    @FindBy(xpath = "//span[text()='Email']")
+    public WebElement emailColumn;
+
+    @FindBy(xpath = "//span[text()='Gender']")
+    public WebElement genderColumn;
+
+    @FindBy(xpath = "//span[text()='Blood Group']")
+    public WebElement bloodGroupColumn;
+
+    @FindBy(xpath = "//span[text()='Address']")
+    public WebElement addressColumn;
+
+    @FindBy(xpath = "//span[text()='Description']")
+    public WebElement descriptionColumn;
+
+    @FindBy(xpath = "//span[text()='Created Date']")
+    public WebElement createdDateColumn;
+
+    @FindBy(xpath = "//span[text()='User']")
+    public WebElement userColumn;
+
+    @FindBy(xpath = "//span[text()='Country']")
+    public WebElement countryColumn;
+
+    @FindBy(xpath = "//span[text()='State/City']")
+    public WebElement stateCityColumn;
+
+    //Table locators end
+
+    @FindBy(xpath = "(//a[@href='javascript:void(0)'])[8]")
+    public WebElement goToLastPageLink;
+
+
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement alertErrorText;  // visible i kullanmali cunku alert error
 
@@ -50,8 +102,12 @@ public class CommonPatientTablePage {
     @FindBy(css = "svg[data-icon='trash'] ")
     public WebElement delete;    //2o tane cikiyor
 
+
+
     //Staff icin searchbox
 
     @FindBy(xpath = "//input[@name='ssn']")
     public WebElement searchSsn;
+
+
 }

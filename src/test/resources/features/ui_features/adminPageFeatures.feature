@@ -32,3 +32,7 @@ Feature: Admin features
     Then verify A new patient is created pop up
 
 
+  Scenario: TC02_Admin_can_see_all_patient_information
+    When user navigates to patients page
+
+
