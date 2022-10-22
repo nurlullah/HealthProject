@@ -2,27 +2,28 @@ package stepdefinitions.uiStepDefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.admin.AdminHomePage;
 import pages.common.CommonCreateEditPatientPage;
 import pages.common.CommonPatientTablePage;
 
 public class AdminPageStepDefs {
-    // burada kim adminin hangi sayfasini kullanirsa onu ekleyecek
+
     AdminHomePage adminHomePage = new AdminHomePage();
     CommonPatientTablePage adminPatientPage = new CommonPatientTablePage();
     CommonCreateEditPatientPage adminCreatePatientPage = new CommonCreateEditPatientPage();
 
-    //gibi...
-
     @When("user navigates to patients page")
     public void user_navigates_to_patients_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        adminHomePage.itemsTitlesButton.click();
+        adminHomePage.patientButton.click();
+        Assert.assertEquals(adminPatientPage.patientPageTitle.getText(),"Patients");
     }
     @Then("click on create new patient")
     public void click_on_create_new_patient() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       Assert.assertTrue(adminPatientPage.adminCreateAnewPatient.isDisplayed());
+       adminPatientPage.adminCreateAnewPatient.click();
+       Assert.assertEquals(adminCreatePatientPage.createPatientTitle.getText(),"Create or edit a Patient");
     }
     @Then("user enters the firstname")
     public void user_enters_the_firstname() {

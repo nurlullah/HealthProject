@@ -6,12 +6,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.base.HomePage;
-import pages.base.UserPasswordPage;
+import pages.base.AccountPasswordPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class us08_passwordEdition_StepDef {
-    UserPasswordPage userPasswordPage= new UserPasswordPage();
+    AccountPasswordPage userPasswordPage= new AccountPasswordPage();
     HomePage homePage = new HomePage();
 
 

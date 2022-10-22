@@ -1,21 +1,21 @@
-Feature: US_15 Patients can only be created by Admin
+Feature: Admin features
 
   Background:
-    Given user is on the Medunna homepage
+    Given user goes to URL "https://www.medunna.com/"
     Then verify the page title contains "MEDUNNA"
     When user navigates on the login page
-    And user enters username as "<username>" and password as "<password>" and click on login button
+    And user enters username and password  and click on login button
       |username|password|
       |team02_admin|egemen_parlak|
     Then verify the login is successful
+      |firstname|lastname|
+      |Egemen   |Parlak  |
 
   @us15_tc01
   Scenario: TC01_New_patient_can_only_be_created_by_admin
 
     When user navigates to patients page
-    Then verify the page title contains "Patients"
     And click on create new patient
-    Then verify the page title contains "Create or edit a Patient "
     And user enters the firstname
     And user enters the lastname
     And user enters the birthdate

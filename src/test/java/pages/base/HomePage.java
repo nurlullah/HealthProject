@@ -32,6 +32,54 @@ public class HomePage {
     @FindBy(css = "#account-menu")//signin olmak ve sonrasında acoount işlemleri için
     public WebElement signInAndAccountIcon;
 
+
+    @FindBy(id = "login-item")
+    public WebElement signIn;
+
+    // locators after clicking on sign in
+    @FindBy(xpath = "(//span[.='Sign in'])[2]")
+    public WebElement singInTitleText;
+
+
+    //Sign in Pop Up locators
+    @FindBy(name = "username")
+    public WebElement usernameBox;
+
+    @FindBy(xpath = "//div[text()='Username cannot be empty!']" )
+    public WebElement usernameCannotBeEmptyMessage;
+
+    @FindBy(name = "password")
+    public WebElement passwordBox;
+
+    @FindBy(xpath = "//div[text()='Password cannot be empty!']" )
+    public WebElement passwordCannotBeEmptyMessage;
+
+
+    @FindBy(css = "input#rememberMe")
+    public WebElement rememberMeCheckbox;
+
+    @FindBy(xpath = "//*[(text()='Did you forget your password?')]")
+    public WebElement forgetPasswordButton;
+
+    @FindBy(xpath = "//*[(text()='Register a new account')]")
+    public WebElement registerNewAccountButton;
+
+    @FindBy(xpath = "//*[(text()='Cancel')]")
+    public WebElement cancelButton;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement signInSubmitButton;
+
+    @FindBy(xpath = "//*[.='Password']")
+    public WebElement password;
+
+    @FindBy(xpath = "(//a[@class='d-flex align-items-center dropdown-toggle nav-link'])[3]/span")
+    public WebElement singedInPersonName;
+    // end of sign in pop up locators
+
+    @FindBy(xpath = "//*[(text()='Register')]")
+    public WebElement register;
+
     //Sıradaki 3 locator signIn olduktan sonra çıkan locaterlar
     @FindBy(css = "a[href='/account/settings']")
     public WebElement settingsLink;
@@ -46,13 +94,6 @@ public class HomePage {
 
     @FindBy(xpath = "//strong[text()='Failed to sign in!']")
     public WebElement failedToSignInText;
-
-    @FindBy(id = "login-item")
-    public WebElement signIn;
-
-    @FindBy(xpath = "//*[(text()='Register')]")
-    public WebElement register;
-
 
     @FindBy(xpath = "//*[(text()='Get Started')]")
     public WebElement getStarted;
@@ -107,28 +148,5 @@ public class HomePage {
     @FindBy(id = "register-submit")
     public WebElement sendAppointmentRequest;
 
-    //Sign in Pop Up locators
-    @FindBy(name = "username")
-    public WebElement usernameBox;
 
-    @FindBy(name = "password")
-    public WebElement passwordBox;
-
-    @FindBy(css = "input#rememberMe")
-    public WebElement rememberMeCheckbox;
-
-    @FindBy(xpath = "//*[(text()='Did you forget your password?')]")
-    public WebElement forgetPasswordButton;
-
-    @FindBy(xpath = "//*[(text()='Register a new account')]")
-    public WebElement registerNewAccountButton;
-
-    @FindBy(xpath = "//*[(text()='Cancel')]")
-    public WebElement cancelButton;
-
-    @FindBy(xpath = "//button[@type='submit']")
-    public WebElement signInSubmitButton;
-
-    @FindBy(xpath = "//*[.='Password']")
-    public WebElement password;
 }

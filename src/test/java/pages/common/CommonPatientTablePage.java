@@ -6,9 +6,14 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class CommonPatientTablePage {
+
     public CommonPatientTablePage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+    @FindBy(xpath = "//span[.='Patients']")
+    public WebElement patientPageTitle;
+
     @FindBy(xpath = "//span[.='Items&Titles']")
     public WebElement items_titles;
 
@@ -19,7 +24,7 @@ public class CommonPatientTablePage {
     public WebElement textPatients;   //text verify icin
 
     @FindBy(xpath = "//span[.='Create a new Patient']")
-    public WebElement createAnewPatient;   //bekle
+    public WebElement adminCreateAnewPatient;
 
     @FindBy(xpath = "//span[.='Create or edit a Patient']")
     public WebElement textCreateOrEditAPatient;   //text verify icin
