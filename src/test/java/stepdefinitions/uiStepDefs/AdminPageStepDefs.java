@@ -1,17 +1,26 @@
 package stepdefinitions.uiStepDefs;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.Select;
 import pages.admin.AdminHomePage;
 import pages.common.CommonCreateEditPatientPage;
 import pages.common.CommonPatientTablePage;
+import utilities.ReusableMethods;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AdminPageStepDefs {
 
     AdminHomePage adminHomePage = new AdminHomePage();
     CommonPatientTablePage adminPatientPage = new CommonPatientTablePage();
     CommonCreateEditPatientPage adminCreatePatientPage = new CommonCreateEditPatientPage();
+    Faker faker = new Faker();
 
     @When("user navigates to patients page")
     public void user_navigates_to_patients_page() {
@@ -27,72 +36,72 @@ public class AdminPageStepDefs {
     }
     @Then("user enters the firstname")
     public void user_enters_the_firstname() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        adminCreatePatientPage.firstNameTextBox.click();
+        adminCreatePatientPage.firstNameTextBox.sendKeys(faker.name().firstName());
+        //Assertion about alert missing
     }
     @Then("user enters the lastname")
     public void user_enters_the_lastname() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        adminCreatePatientPage.lastNameTextBox.click();
+        adminCreatePatientPage.lastNameTextBox.sendKeys(faker.name().lastName());
+
     }
     @Then("user enters the birthdate")
     public void user_enters_the_birthdate() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        adminCreatePatientPage.birthDateTextBox.click();
+        adminCreatePatientPage.birthDateTextBox.sendKeys(faker.date().birthday().toString());
     }
     @Then("user enters the email")
     public void user_enters_the_email() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       adminCreatePatientPage.emailTextBox.click();
+       adminCreatePatientPage.emailTextBox.sendKeys(faker.internet().emailAddress());
     }
     @Then("user enters the phone number")
     public void user_enters_the_phone_number() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+     adminCreatePatientPage.phoneTextBox.click();
+     adminCreatePatientPage.phoneTextBox.sendKeys(faker.phoneNumber().cellPhone());
     }
     @Then("user select a gender")
     public void user_select_a_gender() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       Select select = new Select(adminCreatePatientPage.genderDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(select);
     }
     @Then("user select a blood group")
     public void user_select_a_blood_group() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Select select = new Select(adminCreatePatientPage.bloodGroupDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(select);
     }
     @Then("user enters the address")
     public void user_enters_the_address() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       adminCreatePatientPage.adressTextBox.click();
+       adminCreatePatientPage.adressTextBox.sendKeys(faker.address().fullAddress());
     }
     @Then("user enters the description")
     public void user_enters_the_description() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       adminCreatePatientPage.descriptionTextBox.click();
+       adminCreatePatientPage.descriptionTextBox.sendKeys(faker.lorem().paragraph(3));
     }
     @Then("user select a user")
     public void user_select_a_user() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Select select = new Select(adminCreatePatientPage.userDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(select);
     }
     @Then("user select a country")
     public void user_select_a_country() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Select select = new Select(adminCreatePatientPage.countryDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(select);
     }
     @Then("user select a state")
     public void user_select_a_state() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Select select = new Select(adminCreatePatientPage.countryDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(select);
     }
     @When("user clicks on save button")
     public void user_clicks_on_save_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        adminCreatePatientPage.saveButton.click();
     }
     @Then("verify A new patient is created pop up")
     public void verify_a_new_patient_is_created_pop_up() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPatientPage.popUp.getText().contains("A new Patient is created "));
     }
 }
