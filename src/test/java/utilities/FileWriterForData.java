@@ -1,6 +1,6 @@
 package utilities;
 
-import pojos.RegistrationPojo;
+import pojos.Registration;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FileWriterForData {
 
-    public static void saveData(RegistrationPojo registrant) {
+    public static void saveData(Registration registrant) {
 
         try {
             //Bu verilen adreste benim için txt dosyası oluşturuyor
