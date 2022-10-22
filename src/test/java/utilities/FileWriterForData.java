@@ -1,5 +1,6 @@
 package utilities;
 
+import pojos.Patient;
 import pojos.Registration;
 
 import java.io.BufferedReader;
@@ -11,16 +12,14 @@ import java.util.List;
 
 public class FileWriterForData {
 
-    public static void saveData(Registration registrant) {
+    public static void saveUIRegistrantData(Registration registrant) {
 
         try {
             //Bu verilen adreste benim için txt dosyası oluşturuyor
-            FileWriter fileWriter=new FileWriter("src/test/resources/testdata/PatientData.feature", true);//true dersek önceki datayı silmez, false dersek siler
+            FileWriter fileWriter=new FileWriter(ConfigReader.getProperty("registrantData"), true);//true dersek önceki datayı silmez, false dersek siler
             //Data yazdırabiliriz verilen dosya adresinde
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
-
             bufferedWriter.append(registrant.toString()+"\n");
-
             bufferedWriter.close();
 
         } catch (Exception e) {
@@ -28,13 +27,25 @@ public class FileWriterForData {
         }
     }
 
-    public static List<String> getData() {
+    public static void saveUIAdminPatientData(Patient patient) {
+
+        try {
+            FileWriter fileWriter=new FileWriter(ConfigReader.getProperty("adminPatientData"), true);//true dersek önceki datayı silmez, false dersek siler
+            BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
+            bufferedWriter.append(patient.toString()+"\n");
+            bufferedWriter.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static List<String> getData(String resource) {
 
         List<String> list=new ArrayList<>();
 
         try {
 
-            FileReader fileReader = new FileReader("src/test/resources/testdata/PatientData2.feature");
+            FileReader fileReader = new FileReader(ConfigReader.getProperty(resource));
 
             BufferedReader bufferedReader=new BufferedReader(fileReader);
 
@@ -52,6 +63,8 @@ return list;
     }
 
     public static void main(String[] args) {
-        System.out.println(getData());
+
+        System.out.println(getData("registrantData"));
+        System.out.println(getData("adminPatientData"));
     }
 }
