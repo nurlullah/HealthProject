@@ -5,3 +5,4 @@ Feature: Medunna_Test
     Given User goes to URL "https://www.medunna.com"
     Then verify the page title contains "MEDUNNA"
     Then capture the screenshot
+

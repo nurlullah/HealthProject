@@ -1,4 +1,4 @@
-package stepdefinitions.uiStepDefs;
+package stepdefinitions;
 
 import io.cucumber.java.en.*;
 import utilities.ConfigReader;
@@ -15,4 +15,5 @@ public class BackgroundStepDefs {
     public void verify_the_page_title_contains(String string) {
 
     }
+
 }
