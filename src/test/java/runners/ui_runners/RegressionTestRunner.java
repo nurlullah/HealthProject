@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features",//path od features folder
         glue = {"stepdefinitions"},//path of the step definitions folder
-        tags = "@regression_tests",
+        tags = "@us15_tc01",
         dryRun = false
 )
 public class RegressionTestRunner {

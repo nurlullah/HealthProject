@@ -1,4 +1,4 @@
-package stepdefinitions.uiStepDefs;
+package stepdefinitions;
 
 import io.cucumber.java.en.Then;
 import utilities.ReusableMethods;
