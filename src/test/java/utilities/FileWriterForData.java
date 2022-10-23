@@ -16,7 +16,8 @@ public class FileWriterForData {
 
         try {
             //Bu verilen adreste benim için txt dosyası oluşturuyor
-            FileWriter fileWriter=new FileWriter(ConfigReader.getProperty("registrantData"), true);//true dersek önceki datayı silmez, false dersek siler
+            FileWriter fileWriter=new FileWriter("src/test/resources/testdata/PatientData.feature", false);//true dersek önceki datayı silmez iki kez yazmış olur, false dersek siler
+
             //Data yazdırabiliriz verilen dosya adresinde
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
             bufferedWriter.append(registrant.toString()+"\n");
