@@ -1,7 +1,4 @@
 package stepdefinitions.uiStepDefs;
 
-
-public class UIStepDefs {
-
-
+public class StaffPageStepDefs {
 }
