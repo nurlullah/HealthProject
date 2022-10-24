@@ -23,6 +23,9 @@ public class RegistrationPage {
     @FindBy(id = "username")
     public WebElement userName;
 
+    @FindBy(xpath = "//*[@id='register-form']/div[4]/div")
+    public WebElement usernameisrequired;
+
     @FindBy(id = "email")
     public WebElement email;
 
@@ -47,7 +50,6 @@ public class RegistrationPage {
     @FindBy(xpath = "//*[@id='strengthBar']/li[5]")
     public WebElement fullGreenStrengthBar;
 
-
     @FindBy(id = "secondPassword")
     public WebElement confirmPassword;
 
@@ -59,4 +61,14 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//span[text()='Registration']")
     public WebElement registrationText;
+    @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]" )
+    public WebElement textInvalidSSN;
+
+    @FindBy(xpath = "//*[text()='Your FirstName is required.']" )
+    public WebElement textRequiredFirstName;
+
+    @FindBy(xpath = "//*[text()='Your LastName is required.']" )
+    public WebElement textRequiredLastName;
+
+
 }
