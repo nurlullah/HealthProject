@@ -112,6 +112,23 @@ Feature: Registration related features
       | ½         |  Xy1*     |   Xy1*        |
 
 
+    @US02_Email_Test
+    Scenario Outline: US02_Email_Test
+    And Enter SSN number Faker
+    And Enter First Name Faker
+    And Enter Last Name Faker
+    And Enter Username Faker
+    And Enter "<email>" box without @ sign and .
+    Then Verify the This field is invalid is displayed. text
+    And User closes the application
+      Examples:
+        | email           |
+        |nurullah.gmailcom|
+        |nurullah@gmailcom|
+        |nurullahgmailcom |
+
+
+
   @us03_tc01
   Scenario Outline: US03_TC01
     And Enter SSN number Faker

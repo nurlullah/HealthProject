@@ -286,4 +286,15 @@ public class RegistrationPageStepDefs {
         registrationPage.email.sendKeys(Faker.instance().internet().emailAddress());
     }
 
+    @And("Enter {string} box without @ sign and .")
+    public void enterBoxWithoutSignAnd(String email) {
+        registrationPage.email.sendKeys(email,Keys.ENTER);
+    }
+
+    @Then("Verify the This field is invalid is displayed. text")
+    public void verifyTheThisFieldIsInvalidIsDisplayedText() {
+        Driver.wait(1);
+        Assert.assertTrue(registrationPage.thisFileIsInvalidEmailText.isDisplayed());
+
+    }
 }

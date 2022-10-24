@@ -70,5 +70,8 @@ public class RegistrationPage {
     @FindBy(xpath = "//*[text()='Your LastName is required.']" )
     public WebElement textRequiredLastName;
 
+    @FindBy(xpath = "//*[@id='register-form']/div[5]/div")
+    public WebElement thisFileIsInvalidEmailText;
+
 
 }
