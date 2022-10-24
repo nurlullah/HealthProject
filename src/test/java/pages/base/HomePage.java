@@ -148,5 +148,13 @@ public class HomePage {
     @FindBy(id = "register-submit")
     public WebElement sendAppointmentRequest;
 
+    @FindBy(xpath = "//div[text()='This field is invalid']")
+    public WebElement invalidFieldAlert;
 
-}
+    @FindBy(xpath = "//span[.='Sign in']")
+    public WebElement signInButton;
+
+   /* @FindBy(id = "register-submit")
+    public WebElement sendAppointmentRequest;*/
+
+   }
