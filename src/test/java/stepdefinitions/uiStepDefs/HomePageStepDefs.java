@@ -170,11 +170,11 @@ public class HomePageStepDefs {
 
     @Then("user type a date earlier than appointment date")
     public void user_type_a_date_earlier_than_appointment_date() {
-        physicianMyAppointmentPage.fromDate.sendKeys(Faker.instance().date().past());
+//        physicianMyAppointmentPage.fromDate.sendKeys(Faker.instance().date().past());
     }
     @Then("user type a date later than appointment date")
     public void user_type_a_date_later_than_appointment_date() {
-        physicianMyAppointmentPage.toDate.sendKeys(Faker.instance().date().future(30/10/22));
+//        physicianMyAppointmentPage.toDate.sendKeys(Faker.instance().date().future(30/10/22));
     }
     @Then("hover over the name")
     public void hover_over_the_name() {

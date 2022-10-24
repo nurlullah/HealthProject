@@ -61,4 +61,14 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//span[text()='Registration']")
     public WebElement registrationText;
+    @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]" )
+    public WebElement textInvalidSSN;
+
+    @FindBy(xpath = "//*[text()='Your FirstName is required.']" )
+    public WebElement textRequiredFirstName;
+
+    @FindBy(xpath = "//*[text()='Your LastName is required.']" )
+    public WebElement textRequiredLastName;
+
+
 }
