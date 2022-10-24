@@ -6,182 +6,139 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import pages.base.HomePage;
 import pages.physician.PhysicianMyAppointmentPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class HomePageStepDefs {
     HomePage homePage = new HomePage();
-    PhysicianMyAppointmentPage physicianMyAppointmentPage = new PhysicianMyAppointmentPage();
     Faker faker = new Faker();
 
     @Then("user click on the make an appointment icon")
     public void user_click_on_the_make_an_appointment_icon() {
+
         homePage.makeAppointment.click();
     }
-    @When("user click on the first name box")
-    public void user_click_on_the_first_name_box() {
-        homePage.firstName.click();
+
+    @Then("user clicks on enter button on firstname box on homepage")
+    public void user_clicks_on_enter_button_on_firstname_box_on_homepage() {
+        homePage.firstName.sendKeys(Keys.ENTER);
     }
-    @When("user click Enter button")
-    public void user_click_enter_button() {
-        homePage.sendAnAppointmentRequest.click();
+
+    @Then("user types the firstname on homepage appointment")
+    public void user_types_the_firstname_on_homepage_appointment() {
+       homePage.firstName.sendKeys(faker.name().firstName());
+
+       ReusableMethods.waitFor(3);
     }
+
+
+
+
     @Then("verify Your FirstName is required is displayed")
     public void verify_your_first_name_is_required_is_displayed() {
         Assert.assertTrue(homePage.requiredFirstName.isDisplayed());
     }
-    @And("user type the first name that contains any chars")
-    public void userTypeTheFirstNameThatContainsAnyChars() {
-        homePage.firstName.sendKeys(Faker.instance().name().firstName());
-    }
-    @Then("verify that \"Your FirstName is required\" is not displayed")
-    public void verifyThatIsNotDisplayed(String arg0) {
-        Assert.assertFalse(homePage.requiredFirstName.isDisplayed());
-    }
-    @When("user click on the SSN box")
-    public void user_click_on_the_ssn_box() {
-        homePage.ssn.click();
-    }
-    @When("user type the \"SSN ID\" that has \"-\" after 3rd and 5th digits, it should be {int} digits long and can not be blank")
-    public void user_type_the_that_has_after_3rd_and_5th_digits_it_should_be_digits_long_and_can_not_be_blank(String string, String string2, Integer int1) {
-        homePage.ssn.sendKeys("555-22-2345");
-    }
-    /* @Then("verify that SSN is invalid is not displayed")
-     public void verifyThatIsNotDisplayed(String) {
-       Assert.assertFalse(homePage.invalidSsnAlert.isDisplayed());
-     }*/
-    @When("user click on the last name box")
-    public void user_click_on_the_last_name_box() {
-        homePage.lastName.click();
-    }
-    @When("Click Enter button")
-    public void click_enter_button() {
-        homePage.sendAnAppointmentRequest.click();
-    }
-    @Then("verify \"Your LastName is required\" is displayed")
-    public void verify_is_displayed(String string) {
-        Assert.assertTrue(homePage.requiredLastName.isDisplayed());
-    }
-    @And("user type the \"last name\" that contains any chars")
-    public void userTypeTheThatContainsAnyChars(String arg0) {
-        homePage.lastName.sendKeys(Faker.instance().name().lastName());
+
+    @Then("user clicks on enter button on ssn box on homepage")
+    public void user_clicks_on_enter_button_on_ssn_box_on_homepage() {
+        homePage.ssn.sendKeys(Keys.ENTER);
     }
 
-    @When("user click on the email box")
-    public void user_click_on_the_email_box() {
-        homePage.email.click();
+    @Then("verify that Your SSN is required alert is displayed")
+    public void verify_that_your_ssn_is_required_alert_is_displayed() {
+     Assert.assertTrue(homePage.requiredSsn.isDisplayed());
     }
-    @Then("user type invalid any emails")
-    public void user_type_invalid_any_emails() {
-        homePage.email.sendKeys(Faker.instance().internet().emailAddress());
+    @Then("user types an invalid SSN")
+    public void user_types_an_invalid_ssn() {
+
+       homePage.ssn.sendKeys(faker.idNumber().invalidSvSeSsn());
+
     }
-    @Then("verify \"This field is invalid\"")
-    public void verify(String string) {
-        Assert.assertTrue(homePage.invalidFieldAlert.isDisplayed());
-    }
-    @Then("user type valid any email")
-    public void user_type_valid_any_email() {
-        homePage.email.sendKeys("deniz_zengin@gmail.com");
-    }
-    /*@Then("verify \"This field is invalid\" is not displayed")
-    public void verifyIsNotDisplayed(String) {
-      Assert.assertFalse(homePage.invalidFieldAlert.isDisplayed());
-    }*/
-    @Then("clear Email box")
-    public void clear_email_box() {
-        homePage.email.clear();
+    @Then("verify your SSN is invalid alert is displayed")
+    public void verify_your_ssn_is_invalid_alert_is_displayed() {
+     Assert.assertTrue(homePage.invalidSsnAlert.isDisplayed());
+
     }
 
-    @When("user click on the Phone box")
-    public void user_click_on_the_phone_box() {
-        homePage.phoneNumber.click();
-    }
-    @Then("verify that \"Phone number is required.\" is displayed")
-    public void verifyThatIsDisplayed(String arg0) {
-        Assert.assertTrue(homePage.requiredPhoneNumber.isDisplayed());
-    }
-    @Then("user type invalid Phone number")
-    public void user_type_invalid_phone_number() {
-        homePage.phoneNumber.sendKeys("546-965-2284a");
-    }
-    @Then("verify that Your SSN is invalid is displayed")
-    public void verify_that_your_ssn_is_invalid_is_displayed() {
-        Assert.assertTrue(homePage.invalidSsnAlert.isDisplayed());
-    }
-    @Then("user click valid Phone number that contains {string} after 3th and 6th digits and can not be blank")
-    public void user_click_valid_phone_number_that_contains_after_3th_and_6th_digits_and_can_not_be_blank(String string) {
-        homePage.phoneNumber.sendKeys("546-965-2284");
-    }
-    @When("user click on the sign in and register icon")
-    public void user_click_on_the_sign_in_and_register_icon() {
-        physicianMyAppointmentPage.signInRegisterIcon.click();
-    }
-    @When("user click on Sign in button")
-    public void user_click_on_sign_in_button() {
-        homePage.signInButton.click();
-    }
-    @When("user click on the Username box")
-    public void user_click_on_the_username_box() {
-        homePage.usernameBox.click();
-    }
-    @And("user type the Username")
-    public void userTypeTheUsername() {
-        homePage.usernameBox.sendKeys("team02_physician");
+
+    @Then("user types valid SSN on homepage appointment.")
+    public void user_types_valid_ssn_on_homepage_appointment() {
+        homePage.ssn.clear();
+       /*String ssn = faker.idNumber().ssnValid();
+       //verify ssn is 9 digits
+        int numOfdigits=ssn.replaceAll("[^0-9]","").length();
+        Assert.assertEquals(numOfdigits, 9);
+        //verify - between 3. and 5. digits
+        Assert.assertEquals((char)ssn.charAt(3), '-');
+        //verify - between 3. and 5. digits
+        Assert.assertEquals((char)ssn.charAt(6), '-');
+        homePage.ssn.sendKeys(ssn);*/
+
+        homePage.ssn.sendKeys(faker.idNumber().ssnValid());
     }
 
-    @When("user click on the Password box")
-    public void user_click_on_the_password_box() {
-        homePage.passwordBox.click();
+    @Then("user clicks on enter button on lastname box on homepage")
+    public void user_clicks_on_enter_button_on_lastname_box_on_homepage() {
+        homePage.lastName.sendKeys(Keys.ENTER);
     }
-    @And("user type the \"<Password>\"")
-    public void userTypeThe(String arg0) {
-        homePage.passwordBox.sendKeys("bilge_dede");
+    @Then("verify Your LastName is required is displayedName is required is displayed")
+    public void verify_your_last_name_is_required_is_displayed_name_is_required_is_displayed() {
+      Assert.assertTrue(homePage.requiredLastName.isDisplayed());
     }
-    @When("user click on the Sign In button")
-    public void user_click_on_the_sign_in_button() {
-        homePage.signInButton.click();
-    }
-    @And("user click on the My Pages\\/Patients icon")
-    public void userClickOnTheMyPagesPatientsIcon() {
+    @Then("user types the lastname on homepage appointment")
+    public void user_types_the_lastname_on_homepage_appointment() {
+        homePage.lastName.sendKeys(faker.name().lastName());
 
-        physicianMyAppointmentPage.myPagesIcon.click();
     }
-
-    @When("user click on the My Appointments icon")
-    public void user_click_on_the_my_appointments_icon() {
-        physicianMyAppointmentPage.myAppointments.click();
+    @Then("user clicks on enter button on email box on homepage")
+    public void user_clicks_on_enter_button_on_email_box_on_homepage() {
+        homePage.email.sendKeys(Keys.ENTER);
     }
-    @Then("user click on the from box")
-    public void user_click_on_the_from_box() {
-        physicianMyAppointmentPage.fromDate.click();
+    @Then("verify that Your email is required alert is displayed")
+    public void verify_that_your_email_is_required_alert_is_displayed() {
+      Assert.assertTrue(homePage.requiredEmail.isDisplayed());
     }
-
-    @When("user click on the to box")
-    public void user_click_on_the_to_box() {
-        physicianMyAppointmentPage.toDate.click();
+    @Then("user types an invalid email")
+    public void user_types_an_invalid_email() {
+        homePage.email.sendKeys(faker.name().username());
     }
-
-    @Then("Verify the \"Days between begin date and end date must be max 15 days\" pop-up is displayed")
-    public void verify_the_pop_up_is_displayed(String string) {
-        Assert.assertTrue(physicianMyAppointmentPage.daysBetweenFifteenDaysPopUp.isDisplayed());
+    @Then("verify this field is invalid alert is displayed")
+    public void verify_this_field_is_invalid_alert_is_displayed() {
+      Assert.assertTrue(homePage.invalidFieldAlert.isDisplayed());
+    }
+    @Then("user types valid email on homepage appointment.")
+    public void user_types_valid_email_on_homepage_appointment() {
+        homePage.email.sendKeys(faker.internet().emailAddress());
     }
 
-    @Then("user type a date earlier than appointment date")
-    public void user_type_a_date_earlier_than_appointment_date() {
-        physicianMyAppointmentPage.fromDate.sendKeys(Faker.instance().date().past());
+    @Then("user clicks on enter button on phone box on homepage")
+    public void user_clicks_on_enter_button_on_phone_box_on_homepage() {
+        homePage.phoneNumber.sendKeys(Keys.ENTER);
     }
-    @Then("user type a date later than appointment date")
-    public void user_type_a_date_later_than_appointment_date() {
-        physicianMyAppointmentPage.toDate.sendKeys(Faker.instance().date().future(30/10/22));
+    @Then("verify that Your phone is required alert is displayed")
+    public void verify_that_your_phone_is_required_alert_is_displayed() {
+       Assert.assertTrue(homePage.requiredPhoneNumber.isDisplayed());
     }
-    @Then("hover over the name")
-    public void hover_over_the_name() {
-        physicianMyAppointmentPage.appointment276238.isSelected();
+    @Then("user types an invalid phone")
+    public void user_types_an_invalid_phone() {
+        homePage.phoneNumber.sendKeys(faker.number().digits(8));
     }
-    @Then("user click on the name")
-    public void user_click_on_the_name() {
-        physicianMyAppointmentPage.appointment276238.click();
+    @Then("verify your phone is invalid alert is displayed")
+    public void verify_your_phone_is_invalid_alert_is_displayed() {
+      Assert.assertTrue(homePage.invalidPhoneNumber.isDisplayed());
     }
+    @Then("user types valid phone on homepage appointment.")
+    public void user_types_valid_phone_on_homepage_appointment() {
+      //  ReusableMethods.waitFor(1);
+        homePage.phoneNumber.clear();
+
+        homePage.phoneNumber.sendKeys(faker.number().digits(10));
+    }
+
+
+
 }
