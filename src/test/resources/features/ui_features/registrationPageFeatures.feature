@@ -76,7 +76,6 @@ Feature: Registration related features
     And Enter SSN number Faker
     And Enter First Name Faker
     And Enter Last Name Faker
-    Then Verify text that contains "Your LastName is required." is not Displayed
     And User closes the application
 
   @EmptyLastName
@@ -95,30 +94,31 @@ Feature: Registration related features
     And Click on the username box and click  Enter
     Then Verify Your username is required.
     When Enter any chars on the "<username>"
-    Then Verify Your username is required. is not displayed
+    And Enter Email Address Faker
+    When User enters four chars password "<password>"
+    And User enters the confirm "<confirmPassword>"
+    And User clicks the register button
+    Then verify the Registration Saved text
+    And User closes the application
+
+
 
     Examples:
-      | username |
-      | .         |
-      | 1         |
-      | a         |
-      | B         |
-      | ½         |
+      | username  | password  |confirmPassword|
+      | .         |  xyzt     |   xyzt        |
+      | 1         |  XYZT     |   XYZT        |
+      | a         |  1234     |   1234        |
+      | B         |  @*%$     |   @*%$        |
+      | ½         |  Xy1*     |   Xy1*        |
 
 
-  @us_03
-  Scenario: US03_Registration_page_strength_password
+  @us03_tc01
+  Scenario Outline: US03_TC01
     And Enter SSN number Faker
     And Enter First Name Faker
     And Enter Last Name Faker
     And Enter Username Faker
     And Enter Email Address Faker
-
-
-
-
-  @us03_tc01
-  Scenario Outline: US03_TC01
     Given User enters four chars password "<password>"
     Then User verifies password chart red color is "1"
     And User enters the confirm "<confirmPassword>"
@@ -136,6 +136,11 @@ Feature: Registration related features
 
   @us03_tc02
   Scenario Outline: US03_TC02
+    And Enter SSN number Faker
+    And Enter First Name Faker
+    And Enter Last Name Faker
+    And Enter Username Faker
+    And Enter Email Address Faker
     Given user enters seven chars that possibilities with two combination "<password>"
     Then User verifies password chart orange color is "2"
     And User enters the confirm "<confirmPassword>"
@@ -153,6 +158,11 @@ Feature: Registration related features
 
   @us03_tc03
   Scenario Outline: US03_TC03
+    And Enter SSN number Faker
+    And Enter First Name Faker
+    And Enter Last Name Faker
+    And Enter Username Faker
+    And Enter Email Address Faker
     Given user enters seven chars that possibilities with three combinations "<password>"
     Then User verifies password with four chart green color is "3"
     And User enters the confirm "<confirmPassword>"
@@ -166,6 +176,11 @@ Feature: Registration related features
 
   @us03_tc04
   Scenario Outline: US03_TC04
+    And Enter SSN number Faker
+    And Enter First Name Faker
+    And Enter Last Name Faker
+    And Enter Username Faker
+    And Enter Email Address Faker
     Given User enters seven chars that possibilities with four combinations "<password>"
     Then User verifies password with four chart green color with five bar is "4"
     And User enters the confirm "<confirmPassword>"
@@ -179,6 +194,11 @@ Feature: Registration related features
 
   @US03_TC05
   Scenario Outline: US03_TC05_strength_password_test
+    And Enter SSN number Faker
+    And Enter First Name Faker
+    And Enter Last Name Faker
+    And Enter Username Faker
+    And Enter Email Address Faker
     Given User types into password "<strengthPassword>"
     Then User confirms the password strength "<strength>"
     And User clicks the register button

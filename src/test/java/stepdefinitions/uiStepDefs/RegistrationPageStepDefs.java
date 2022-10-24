@@ -19,100 +19,66 @@ public class RegistrationPageStepDefs {
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
 
-    @Given("Open the URL {string}")
-    public void open_the_url(String string) {
+    @Given("User goes to the medunna url")
+    public void user_goes_to_the_medunna_url() {
         Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
     }
-
 
     @Then("Verify the page title contains MEDUNNA")
     public void verify_the_page_title_contains_medunna() {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("MEDUNNA"));
     }
 
-    @Then("Verify Registration text")
-    public void verify_registration_text() {
-        Assert.assertTrue(registrationPage.registrationText.isDisplayed());
-
-    }
-
-    @When("Enter SSN number Faker")
-    public void enter_ssn_number_Faker() {
-        registrationPage.ssn.sendKeys(Faker.instance().idNumber().ssnValid());
-
-    }
-    @When("Enter First Name Faker")
-    public void enter_first_name_Faker() {
-        registrationPage.firstName.sendKeys(Faker.instance().name().firstName());
-
-    }
-    @When("Enter Last Name Faker")
-    public void enter_last_name_Faker() {
-        registrationPage.lastName.sendKeys(Faker.instance().name().lastName());
-
-    }
-    @When("Click on the username box and click  Enter")
-    public void click_on_the_username_box_and_click_enter() {
-        registrationPage.userName.sendKeys(Keys.ENTER);
-
-    }
-    @Then("Verify Your username is required.")
-    public void verify_your_username_is_required() {
-        Assert.assertTrue(registrationPage.usernameisrequired.isDisplayed());
-
-    }
-    @When("Enter any chars on the {string}")
-    public void enterAnyCharsOnThe(String username) {
-        registrationPage.userName.sendKeys(username);
-
-    }
-    @Then("Verify Your username is required. is not displayed")
-    public void verify_your_username_is_required_is_not_displayed() {
-
-
-    }
-
-    @Given("User goes to the medunna url")
-    public void user_goes_to_the_medunna_url() {
-        Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
-    }
     @When("User clicks the sign in symbol and register dropdown button")
     public void user_clicks_the_sign_in_symbol_and_register_dropdown_button() {
         homePage.signInAndAccountIcon.click();
         Driver.wait(1);
         homePage.register.click();
     }
-    @Then("User enters ssn {string}")
-    public void userEntersSsn(String ssn) {
-        Driver.sleep(1000);
-        registrationPage.ssn.sendKeys(Faker.instance().idNumber().ssnValid());
+
+
+    @Then("Verify Registration text")
+    public void verify_registration_text() {
+        Driver.wait(1);
+        Assert.assertTrue(registrationPage.registrationText.isDisplayed());
+
     }
 
-    @And("User enters firstname {string}")
-    public void userEntersFirstname(String firstName) {
-        Driver.sleep(1000);
+    @When("Enter SSN number Faker")
+    public void enter_ssn_number_Faker() {
+        Driver.wait(1);
+        registrationPage.ssn.sendKeys(Faker.instance().idNumber().ssnValid());
+
+    }
+    @When("Enter First Name Faker")
+    public void enter_first_name_Faker() {
+        Driver.wait(1);
         registrationPage.firstName.sendKeys(Faker.instance().name().firstName());
 
     }
-
-    @And("User enters lastname {string}")
-    public void userEntersLastname(String lastName) {
+    @When("Enter Last Name Faker")
+    public void enter_last_name_Faker() {
+        Driver.wait(1);
         registrationPage.lastName.sendKeys(Faker.instance().name().lastName());
 
     }
+    @When("Click on the username box and click  Enter")
+    public void click_on_the_username_box_and_click_enter() {
+        Driver.wait(1);
+        registrationPage.userName.sendKeys(Keys.ENTER);
 
-    @And("User enters username {string}")
-    public void userEntersUsername(String username) {
-        Driver.sleep(1000);
-        registrationPage.userName.sendKeys(Faker.instance().name().username());
     }
+    @Then("Verify Your username is required.")
+    public void verify_your_username_is_required() {
+        Driver.wait(1);
+        Assert.assertTrue(registrationPage.usernameisrequired.isDisplayed());
 
+    }
+    @When("Enter any chars on the {string}")
+    public void enterAnyCharsOnThe(String username) {
+        Driver.wait(1);
+        registrationPage.userName.sendKeys(username);
 
-
-    @And("User enters email {string}")
-    public void userEntersEmail(String email) {
-        Driver.sleep(1000);
-        registrationPage.email.sendKeys(Faker.instance().internet().emailAddress());
     }
 
     @Given("User enters four chars password {string}")
@@ -122,7 +88,6 @@ public class RegistrationPageStepDefs {
         Driver.waitAndSendText(registrationPage.newPassword,password,5);
 
     }
-
 
     @Then("User verifies password chart red color is {string}")
     public void user_verifies_password_chart_red_color_is(String level) {
@@ -170,7 +135,6 @@ public class RegistrationPageStepDefs {
         Driver.waitAndSendText(registrationPage.confirmPassword,confirmPassword,5);
 
     }
-
 
     @Given("User types into password {string}")
     public void user_types_into_password(String strengthPassword) {
@@ -220,22 +184,11 @@ public class RegistrationPageStepDefs {
         }
     }
 
-    @When("Click on the sign in and account icon")
-    public void click_OnTheSignInAndAccountIcon() {
-     homePage.signInAndAccountIcon.click();
-    }
-    @And("Click on Register Button")
-    public void click_OnRegisterButton() {
-        homePage.register.click();
-    }
     @When("Type the valid ssn as {string}")
     public void type_the_valid_ssn_as(String ssn) {
         registrationPage.ssn.sendKeys(ssn, Keys.ENTER);
     }
-    @And("Close the application")
-    public void close_TheApplication() {
-        Driver.getDriver().close();
-    }
+
     @When("Type the multiple invalid ssn as {string}")
     public void typeTheMultipleInvalidSsnAs(String ssn) throws InterruptedException {
         registrationPage.ssn.sendKeys(ssn, Keys.ENTER);
@@ -244,7 +197,6 @@ public class RegistrationPageStepDefs {
         System.out.println(registrationPage.textInvalidSSN.getText());
 
     }
-
 
     @When("Click on the ssn box and leave empty ssn")
     public void clickOnTheSsnBoxAndLeaveEmptySsn() {
@@ -293,12 +245,6 @@ public class RegistrationPageStepDefs {
 
     }
 
-    @When("Click on the last Register button")
-    public void clickOnTheLastRegisterButton() throws InterruptedException {
-        JSUtils.clickElementByJS(registrationPage.registerButton);
-        Thread.sleep(3000);
-    }
-
     @Then("Verify text that {string} is displayed")
     public void verify_TextThatIsDisplayed(String text) throws InterruptedException {
         Thread.sleep(2000);
@@ -339,11 +285,5 @@ public class RegistrationPageStepDefs {
     public void enterEmailAddressFaker() {
         registrationPage.email.sendKeys(Faker.instance().internet().emailAddress());
     }
-
-    @Then("Verify text that contains {string} is not Displayed")
-    public void verifyTextThatContainsIsNotDisplayed(String arg0) {
-        Assert.assertTrue(!registrationPage.textRequiredLastName.isDisplayed());
-    }
-
 
 }
