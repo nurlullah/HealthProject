@@ -167,7 +167,7 @@ public class HomePageStepDefs {
     public void verify_the_pop_up_is_displayed(String string) {
         Assert.assertTrue(physicianMyAppointmentPage.daysBetweenFifteenDaysPopUp.isDisplayed());
     }
-
+/*
     @Then("user type a date earlier than appointment date")
     public void user_type_a_date_earlier_than_appointment_date() {
         physicianMyAppointmentPage.fromDate.sendKeys(Faker.instance().date().past());
@@ -176,6 +176,8 @@ public class HomePageStepDefs {
     public void user_type_a_date_later_than_appointment_date() {
         physicianMyAppointmentPage.toDate.sendKeys(Faker.instance().date().future(30/10/22));
     }
+
+ */
     @Then("hover over the name")
     public void hover_over_the_name() {
         physicianMyAppointmentPage.appointment276238.isSelected();
