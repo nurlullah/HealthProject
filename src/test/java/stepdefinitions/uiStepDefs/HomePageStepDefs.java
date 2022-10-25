@@ -30,9 +30,9 @@ public class HomePageStepDefs {
 
     @Then("user types the firstname on homepage appointment")
     public void user_types_the_firstname_on_homepage_appointment() {
-       homePage.firstName.sendKeys(faker.name().firstName());
+        homePage.firstName.sendKeys(faker.name().firstName());
 
-       ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(3);
     }
 
 
@@ -50,17 +50,17 @@ public class HomePageStepDefs {
 
     @Then("verify that Your SSN is required alert is displayed")
     public void verify_that_your_ssn_is_required_alert_is_displayed() {
-     Assert.assertTrue(homePage.requiredSsn.isDisplayed());
+        Assert.assertTrue(homePage.requiredSsn.isDisplayed());
     }
     @Then("user types an invalid SSN")
     public void user_types_an_invalid_ssn() {
 
-       homePage.ssn.sendKeys(faker.idNumber().invalidSvSeSsn());
+        homePage.ssn.sendKeys(faker.idNumber().invalidSvSeSsn());
 
     }
     @Then("verify your SSN is invalid alert is displayed")
     public void verify_your_ssn_is_invalid_alert_is_displayed() {
-     Assert.assertTrue(homePage.invalidSsnAlert.isDisplayed());
+        Assert.assertTrue(homePage.invalidSsnAlert.isDisplayed());
 
     }
 
@@ -87,7 +87,7 @@ public class HomePageStepDefs {
     }
     @Then("verify Your LastName is required is displayedName is required is displayed")
     public void verify_your_last_name_is_required_is_displayed_name_is_required_is_displayed() {
-      Assert.assertTrue(homePage.requiredLastName.isDisplayed());
+        Assert.assertTrue(homePage.requiredLastName.isDisplayed());
     }
     @Then("user types the lastname on homepage appointment")
     public void user_types_the_lastname_on_homepage_appointment() {
@@ -100,7 +100,7 @@ public class HomePageStepDefs {
     }
     @Then("verify that Your email is required alert is displayed")
     public void verify_that_your_email_is_required_alert_is_displayed() {
-      Assert.assertTrue(homePage.requiredEmail.isDisplayed());
+        Assert.assertTrue(homePage.requiredEmail.isDisplayed());
     }
     @Then("user types an invalid email")
     public void user_types_an_invalid_email() {
@@ -108,7 +108,7 @@ public class HomePageStepDefs {
     }
     @Then("verify this field is invalid alert is displayed")
     public void verify_this_field_is_invalid_alert_is_displayed() {
-      Assert.assertTrue(homePage.invalidFieldAlert.isDisplayed());
+        Assert.assertTrue(homePage.invalidFieldAlert.isDisplayed());
     }
     @Then("user types valid email on homepage appointment.")
     public void user_types_valid_email_on_homepage_appointment() {
@@ -121,7 +121,7 @@ public class HomePageStepDefs {
     }
     @Then("verify that Your phone is required alert is displayed")
     public void verify_that_your_phone_is_required_alert_is_displayed() {
-       Assert.assertTrue(homePage.requiredPhoneNumber.isDisplayed());
+        Assert.assertTrue(homePage.requiredPhoneNumber.isDisplayed());
     }
     @Then("user types an invalid phone")
     public void user_types_an_invalid_phone() {
@@ -129,11 +129,11 @@ public class HomePageStepDefs {
     }
     @Then("verify your phone is invalid alert is displayed")
     public void verify_your_phone_is_invalid_alert_is_displayed() {
-      Assert.assertTrue(homePage.invalidPhoneNumber.isDisplayed());
+        Assert.assertTrue(homePage.invalidPhoneNumber.isDisplayed());
     }
     @Then("user types valid phone on homepage appointment.")
     public void user_types_valid_phone_on_homepage_appointment() {
-      //  ReusableMethods.waitFor(1);
+        //  ReusableMethods.waitFor(1);
         homePage.phoneNumber.clear();
 
         homePage.phoneNumber.sendKeys(faker.number().digits(10));
