@@ -19,13 +19,14 @@ public class RegistrationPageStepDefs {
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
 
-    @Given("User goes to the medunna url")
-    public void user_goes_to_the_medunna_url() {
+
+    @Given("user goes to URL {string}")
+    public void userGoesToURL(String arg0) {
         Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
     }
 
-    @Then("Verify the page title contains MEDUNNA")
-    public void verify_the_page_title_contains_medunna() {
+    @Then("verify the page title contains {string}")
+    public void verifyThePageTitleContains(String arg0) {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("MEDUNNA"));
     }
 
@@ -50,30 +51,35 @@ public class RegistrationPageStepDefs {
         registrationPage.ssn.sendKeys(Faker.instance().idNumber().ssnValid());
 
     }
+
     @When("Enter First Name Faker")
     public void enter_first_name_Faker() {
         Driver.wait(1);
         registrationPage.firstName.sendKeys(Faker.instance().name().firstName());
 
     }
+
     @When("Enter Last Name Faker")
     public void enter_last_name_Faker() {
         Driver.wait(1);
         registrationPage.lastName.sendKeys(Faker.instance().name().lastName());
 
     }
+
     @When("Click on the username box and click  Enter")
     public void click_on_the_username_box_and_click_enter() {
         Driver.wait(1);
         registrationPage.userName.sendKeys(Keys.ENTER);
 
     }
+
     @Then("Verify Your username is required.")
     public void verify_your_username_is_required() {
         Driver.wait(1);
         Assert.assertTrue(registrationPage.usernameisrequired.isDisplayed());
 
     }
+
     @When("Enter any chars on the {string}")
     public void enterAnyCharsOnThe(String username) {
         Driver.wait(1);
@@ -85,7 +91,7 @@ public class RegistrationPageStepDefs {
     public void user_enters_four_chars_password(String password) {
 
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationPage.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword, password, 5);
 
     }
 
@@ -99,30 +105,35 @@ public class RegistrationPageStepDefs {
     public void user_enters_seven_chars_that_possibilities_with_two_combination(String password) {
 
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationPage.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword, password, 5);
 
     }
+
     @Then("User verifies password chart orange color is {string}")
     public void user_verifies_password_chart_orange_color_is(String level) {
         colorStrength(level);
         Driver.wait(1);
     }
+
     @Given("user enters seven chars that possibilities with three combinations {string}")
     public void user_enters_seven_chars_that_possibilities_with_three_combinations(String password) {
         Driver.sleep(1000);
-        Driver.waitAndSendText( registrationPage.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword, password, 5);
     }
+
     @Then("User verifies password with four chart green color is {string}")
     public void user_verifies_password_with_four_chart_green_color_is(String level) {
         colorStrength(level);
         Driver.wait(1);
     }
+
     @Given("User enters seven chars that possibilities with four combinations {string}")
     public void user_enters_seven_chars_that_possibilities_with_four_combinations(String password) {
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationPage.newPassword,password,5);
+        Driver.waitAndSendText(registrationPage.newPassword, password, 5);
 
     }
+
     @Then("User verifies password with four chart green color with five bar is {string}")
     public void user_verifies_password_with_four_chart_green_color_with_five_bar_is(String level) {
         colorStrength(level);
@@ -132,21 +143,23 @@ public class RegistrationPageStepDefs {
     @Then("User enters the confirm {string}")
     public void user_enters_the_confirm(String confirmPassword) {
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationPage.confirmPassword,confirmPassword,5);
+        Driver.waitAndSendText(registrationPage.confirmPassword, confirmPassword, 5);
 
     }
 
     @Given("User types into password {string}")
     public void user_types_into_password(String strengthPassword) {
         Driver.sleep(1000);
-        Driver.waitAndSendText(registrationPage.newPassword,strengthPassword,5);
+        Driver.waitAndSendText(registrationPage.newPassword, strengthPassword, 5);
 
     }
+
     @Then("User confirms the password strength {string}")
     public void user_confirms_the_password_strength(String level) {
         colorStrength(level);
         Driver.wait(1);
     }
+
     //Register button
     @Then("User clicks the register button")
     public void user_clicks_the_register_button() {
@@ -156,6 +169,7 @@ public class RegistrationPageStepDefs {
         //saveData(registrationPojo); sadece bu şekilde import ederek de kullanbiliriz. çünkü method static
         //FileWriterForData.saveData(registrationPojo);
     }
+
     @Then("verify the Registration Saved text")
     public void verifyTheRegistrationSavedText() {
         Assert.assertTrue(registrationPage.registrationText.isDisplayed());
@@ -168,18 +182,18 @@ public class RegistrationPageStepDefs {
     }
 
     //method
-    public void colorStrength(String level){
+    public void colorStrength(String level) {
 
-        if (1== Integer.parseInt(level)){
+        if (1 == Integer.parseInt(level)) {
             Assert.assertTrue(registrationPage.redStrengthBar.isDisplayed());
             Driver.wait(1);
-        } else if (2==Integer.parseInt(level)) {
+        } else if (2 == Integer.parseInt(level)) {
             Assert.assertTrue(registrationPage.orangeStrengthBar.isDisplayed());
             Driver.wait(1);
-        }else if (3==Integer.parseInt(level)){
+        } else if (3 == Integer.parseInt(level)) {
             Assert.assertTrue(registrationPage.fourGreenStrengthBar.isDisplayed());
             Driver.wait(1);
-        } else if (4==Integer.parseInt(level)) {
+        } else if (4 == Integer.parseInt(level)) {
             Assert.assertTrue(registrationPage.fullGreenStrengthBar.isDisplayed());
         }
     }
@@ -239,7 +253,7 @@ public class RegistrationPageStepDefs {
     }
 
     @And("Enter a confirming password into the {string} box")
-    public void enterAConfirmingPasswordIntoTheBox(String confirmPassword)  {
+    public void enterAConfirmingPasswordIntoTheBox(String confirmPassword) {
 
         registrationPage.confirmPassword.sendKeys(confirmPassword);
 
@@ -288,7 +302,7 @@ public class RegistrationPageStepDefs {
 
     @And("Enter {string} box without @ sign and .")
     public void enterBoxWithoutSignAnd(String email) {
-        registrationPage.email.sendKeys(email,Keys.ENTER);
+        registrationPage.email.sendKeys(email, Keys.ENTER);
     }
 
     @Then("Verify the This field is invalid is displayed. text")
@@ -298,3 +312,4 @@ public class RegistrationPageStepDefs {
 
     }
 }
+

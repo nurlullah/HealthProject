@@ -11,14 +11,10 @@ public class PhysicianMyAppointmentPage {
     PageFactory.initElements(Driver.getDriver(),this);
 
 }
-    @FindBy(css = "svg[class='svg-inline--fa fa-user fa-w-14 ']")
-    public WebElement signInRegisterIcon;
 
-    @FindBy(xpath = "//span[.='MY PAGES']")
-    public WebElement myPagesIcon;
 
-    @FindBy(xpath = "//span[.='My Appointments']")
-    public WebElement myAppointments;
+
+
 
     @FindBy(xpath = "//h2[text()='Appointments']")
     public WebElement appointmentsHeading;

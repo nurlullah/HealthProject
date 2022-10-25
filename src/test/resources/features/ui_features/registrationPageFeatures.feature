@@ -112,7 +112,7 @@ Feature: Registration related features
       | ½         |  Xy1*     |   Xy1*        |
 
 
-    @US02_Email_Test
+    @US02_Email_Test @smoke_test
     Scenario Outline: US02_Email_Test
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -123,7 +123,7 @@ Feature: Registration related features
     And User closes the application
       Examples:
         | email           |
-        |nurullah.gmailcom|
+        |nurullahgmail.com|
         |nurullah@gmailcom|
         |nurullahgmailcom |
 
