@@ -163,4 +163,10 @@ public class HomePage {
    /* @FindBy(id = "register-submit")
     public WebElement sendAppointmentRequest;*/
 
+    @FindBy(xpath = " //*[@id='account-menu']/a/span")
+    public WebElement accountText;
+
+    @FindBy(xpath = " //*[@id='account-menu']/a")
+    public WebElement accountClick;
+
    }

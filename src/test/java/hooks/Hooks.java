@@ -26,9 +26,9 @@ public class Hooks {
 //        Adding Reports that is generated when a scenario FAILS
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "failed_scenario");
+            scenario.attach(screenshot, "image/png", "failed_scenario"); }
             Driver.closeDriver();
-        }
+
     }
 
 }
