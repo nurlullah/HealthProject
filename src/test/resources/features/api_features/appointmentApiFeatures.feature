@@ -1,4 +1,5 @@
-Feature: test user api
+@appointment_api
+Feature: appointment related features
 
   @userApi
   Scenario: user api data request

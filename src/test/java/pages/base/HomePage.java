@@ -169,4 +169,4 @@ public class HomePage {
     @FindBy(xpath = " //*[@id='account-menu']/a")
     public WebElement accountClick;
 
-   }
+}
