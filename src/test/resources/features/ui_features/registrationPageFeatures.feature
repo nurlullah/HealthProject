@@ -5,7 +5,7 @@ Feature: Registration related features
     When User clicks the sign in symbol and register dropdown button
     Then Verify Registration text
 
-  @ValidSSN
+  @ValidSSN @smoke_test
   Scenario Outline: User provide valid ssn in the ssn box
     When Type the valid ssn as "<ssn>"
 #    Then Verify text that "Your SSN is invalid" is not displayed
@@ -21,7 +21,7 @@ Feature: Registration related features
       |000-00-0000|
 
 
-  @InvalidSSN
+  @InvalidSSN @smoke_test
   Scenario Outline: User provide multiple invalid ssn in the ssn box
     When Type the multiple invalid ssn as "<ssn>"
 #    Then Verify text that "Your SSN is invalid" is displayed
@@ -41,14 +41,14 @@ Feature: Registration related features
       |123-45-789|
       |123-45-78945|
 
-  @EmptySSN
+  @EmptySSN @smoke_test
   Scenario: User don't write any char in the ssn box
     When Click on the ssn box and leave empty ssn
     Then Verify text that "Your SSN is required." is displayed
     And User closes the application
 
 
-  @ValidFirstName
+  @ValidFirstName @smoke_test
   Scenario Outline: User provide any char in the first name box
     And Enter SSN number Faker
     And Enter a valid first name into the "<firstname>" box
@@ -62,7 +62,7 @@ Feature: Registration related features
       | 457-23-7044 | ' | Mraclesss | ambassadrrr | peaceeesss@gmail.com | Slms6666...ss | Slms6666...ss |
       | 457-23-7043 | :) | Mraclessss | ambassadrrrr | peaceeeesss@gmail.com | Slms6666...sss | Slms6666...sss |
 
-  @EmptyFirstName
+  @EmptyFirstName @smoke_test
   Scenario: User don't write any char in the first name box
     And Enter SSN number Faker
     And Click on the firstname box and click Enter
@@ -71,14 +71,14 @@ Feature: Registration related features
 
 
 
-  @ValidLastName
+  @ValidLastName @smoke_test
   Scenario: User provide any char in the first name box
     And Enter SSN number Faker
     And Enter First Name Faker
     And Enter Last Name Faker
     And User closes the application
 
-  @EmptyLastName
+  @EmptyLastName @smoke_test
   Scenario: User don't write any char in the last name box
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -86,7 +86,7 @@ Feature: Registration related features
     Then Verify text that equals "Your LastName is required."
     And User closes the application
 
-  @US02_Username_Test
+  @US02_Username_Test @smoke_test
   Scenario Outline: US02_Username_Test
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -129,7 +129,7 @@ Feature: Registration related features
 
 
 
-  @us03_tc01
+  @us03_tc01 @smoke_test
   Scenario Outline: US03_TC01
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -151,7 +151,7 @@ Feature: Registration related features
       | @*%$     |   @*%$        |
       | Xy1*     |   Xy1*        |
 
-  @us03_tc02
+  @us03_tc02 @smoke_test
   Scenario Outline: US03_TC02
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -173,7 +173,7 @@ Feature: Registration related features
       | xyzt%+*  |   xyzt%+*     |
       | %+*xyzt  |   %+*xyzt     |
 
-  @us03_tc03
+  @us03_tc03 @smoke_test
   Scenario Outline: US03_TC03
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -191,7 +191,7 @@ Feature: Registration related features
       | %&123XY  |    %&123XY    |
       | 123xy*&  |    123xy*&    |
 
-  @us03_tc04
+  @us03_tc04 @smoke_test
   Scenario Outline: US03_TC04
     And Enter SSN number Faker
     And Enter First Name Faker
@@ -209,7 +209,7 @@ Feature: Registration related features
       | %XYzt12  |    %XYzt12    |
       | 12%XYzt  |    12%XYzt    |
 
-  @US03_TC05
+  @US03_TC05 @smoke_test
   Scenario Outline: US03_TC05_strength_password_test
     And Enter SSN number Faker
     And Enter First Name Faker
