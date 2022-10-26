@@ -9,6 +9,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import utilities.ConfigReader;
 import utilities.Driver;
+
+import static baseurl.MedunnaBaseUrl.medunnaSetUp;
+
 public class Hooks {
     //    SKIPPING THE TAG THAT IS IN THE BEFORE ANNOTATION
 //    IN THIS EXAMPLE @skip_scenario tagged scenarios will be skipped
@@ -29,6 +32,11 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", "failed_scenario"); }
             Driver.closeDriver();
 
+    }
+
+    @Before(value = "@registrant_api")
+    public void beforeRegistrationApi (){
+        medunnaSetUp();
     }
 
 }
