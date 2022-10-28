@@ -3,9 +3,7 @@ package stepdefinitions.uiStepDefs;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import pages.admin.AdminHomePage;
 import pages.common.CommonCreateEditPatientPage;
@@ -17,9 +15,6 @@ import pojos.User;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 import static utilities.FileWriterForData.saveUIAdminPatientData;
 
@@ -35,6 +30,7 @@ public class AdminPageStepDefs {
     StateCity city = new StateCity();
 
 
+
     @When("user navigates to patients page")
     public void user_navigates_to_patients_page() {
         adminHomePage.itemsTitlesButton.click();
@@ -43,9 +39,9 @@ public class AdminPageStepDefs {
     }
     @Then("click on create new patient")
     public void click_on_create_new_patient() {
-       Assert.assertTrue(adminPatientPage.adminCreateAnewPatient.isDisplayed());
-       adminPatientPage.adminCreateAnewPatient.click();
-       Assert.assertEquals(adminCreatePatientPage.createPatientTitle.getText(),"Create or edit a Patient");
+        Assert.assertTrue(adminPatientPage.adminCreateAnewPatient.isDisplayed());
+        adminPatientPage.adminCreateAnewPatient.click();
+        Assert.assertEquals(adminCreatePatientPage.createPatientTitle.getText(),"Create or edit a Patient");
     }
     @Then("user enters the firstname")
     public void user_enters_the_firstname() {
@@ -73,8 +69,8 @@ public class AdminPageStepDefs {
     }
     @Then("user enters the phone number")
     public void user_enters_the_phone_number() {
-     patient.setPhone(faker.phoneNumber().cellPhone());
-     Driver.waitAndSendText(adminCreatePatientPage.phoneTextBox,patient.getPhone());
+        patient.setPhone(faker.phoneNumber().cellPhone());
+        Driver.waitAndSendText(adminCreatePatientPage.phoneTextBox,patient.getPhone());
 
     }
     @Then("user select a gender")

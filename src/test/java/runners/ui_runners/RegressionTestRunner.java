@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
                 "rerun:target/failedRerun.txt",
         },
         features = "./src/test/resources/features",//path od features folder
-        glue = {"stepdefinitions"},//path of the step definitions folder
-        tags = "@us15_tc01",
+        glue = {"stepdefinitions","Hooks"},//path of the step definitions folder
+        tags = "@US02_Username_Test",
         dryRun = false
 )
 public class RegressionTestRunner {

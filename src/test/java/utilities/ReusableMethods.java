@@ -1,11 +1,12 @@
 package utilities;
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -169,5 +170,77 @@ public class ReusableMethods {
         select.selectByIndex(optionIndex);
         return select.getFirstSelectedOption();
     }
+
+    public static void storeObjectInAFile(Object obj) {
+        try {
+
+            // Create a FileOutputStream Object by passing text file
+            // name which will be used to store the object state
+
+            FileOutputStream fos = new FileOutputStream(Object.class + ".txt");
+
+            // Create a ObjectOutputStream object which wraps
+            // object of FileOutputStream thus helping to pass object
+            // to a text file.
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+
+            // Calling the writeObject method present in the ObjectOutputStream
+            // which will save the object state into the text file created above
+            oos.writeObject(obj);
+
+
+            // Flushing and closing the ObjectOutputStream
+            // as they are very critical resource
+            oos.flush();
+            oos.close();
+
+            // Assigning the  object to null so that its actual
+            // object goes into unreachable state in heap ... similar to
+            // destruction of object in this case
+            obj = null;
+
+            // Create a FileInputStream Object by passing text file
+            // name which will be used to read the state of the object
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static Object readFileToGetObject(String fileName) throws FileNotFoundException {
+            Object obj = new Object();
+            FileInputStream fis = new FileInputStream(Object.class+".txt");
+
+            // 13. Create a ObjectInputStream object which wraps
+            // object of FileInputStream thus helping to pass object
+            // state from text file to Object
+
+            ObjectInputStream ois = null;
+            try {
+                 ois = new ObjectInputStream(fis);
+
+
+             // 14. In order to read the User object we will use the
+             // ObjectInputStream.readObject() method. After this method gets
+                // executed it reads object state from text file and return a object
+            // of type Object so we need to cast it back the its origin class,
+            // the User class.
+
+
+            obj = (Object) ois.readObject();
+            // closing the critical resources
+            ois.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+         return obj;
+
+    }
+
 
 }

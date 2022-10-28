@@ -145,9 +145,7 @@ public class Patient {
         this.bloodGroup = bloodGroup;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+    public void setCountry(Country country) {this.country = country;}
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;

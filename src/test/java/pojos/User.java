@@ -3,10 +3,11 @@ package pojos;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class User implements Serializable {
     /*
     "user": {
                           "activated": true,
@@ -36,6 +37,16 @@ public class User {
     private String login;
     private Date resetDate;
     private String ssn;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    private String password;
 
     public boolean isActivated() {
         return activated;

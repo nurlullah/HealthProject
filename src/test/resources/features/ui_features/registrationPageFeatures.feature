@@ -1,8 +1,8 @@
 Feature: Registration related features
   Background:
-    Given user goes to URL "https://www.medunna.com/"
-    Then verify the page title contains "MEDUNNA"
-    When User clicks the sign in symbol and register dropdown button
+    Given user goes to URL
+    Then verify the page title contains MEDUNNA
+    When user navigates on the login page
     Then Verify Registration text
 
   @ValidSSN @smoke_test

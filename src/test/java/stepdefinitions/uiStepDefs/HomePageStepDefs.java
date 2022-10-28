@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.base.HomePage;
 import pages.physician.PhysicianMyAppointmentPage;
+import pojos.Appointment;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -17,6 +18,12 @@ public class HomePageStepDefs {
     HomePage homePage = new HomePage();
     Faker faker = new Faker();
 
+    @When("User clicks the sign in symbol and register dropdown button")
+    public void user_clicks_the_sign_in_symbol_and_register_dropdown_button() {
+        homePage.signInAndAccountIcon.click();
+        Driver.wait(1);
+        homePage.register.click();
+    }
     @Then("user click on the make an appointment icon")
     public void user_click_on_the_make_an_appointment_icon() {
 
