@@ -102,7 +102,7 @@ public class HomePage {
     public WebElement makeAppointment;
 
     //make an appointmenta clickleyince çıkıyor. homepage in alt kısmında
-    @FindBy(id = "firstName")
+    @FindBy(xpath = "//input[@id='firstName']")
     public WebElement firstName;
 
     @FindBy(xpath = "//div[text()='Your FirstName is required.']")
@@ -120,6 +120,9 @@ public class HomePage {
     @FindBy(xpath = "//div[text()='Your SSN is invalid']")
     public WebElement invalidSsnAlert;
 
+    @FindBy(xpath = "//div[.='Your SSN is required.']")
+    public WebElement requiredSsn;
+
     @FindBy(id = "email")
     public WebElement email;
 
@@ -131,6 +134,9 @@ public class HomePage {
 
     @FindBy(xpath = "//div[text()='Phone number is required.']")
     public WebElement requiredPhoneNumber;
+
+    @FindBy(xpath = "//div[text()='Phone number is invalid']")
+    public WebElement invalidPhoneNumber;
 
     @FindBy(id = "appoDate")
     public WebElement appointmentDateTime;
@@ -156,5 +162,11 @@ public class HomePage {
 
    /* @FindBy(id = "register-submit")
     public WebElement sendAppointmentRequest;*/
+
+    @FindBy(xpath = " //*[@id='account-menu']/a/span")
+    public WebElement accountText;
+
+    @FindBy(xpath = " //*[@id='account-menu']/a")
+    public WebElement accountClick;
 
    }

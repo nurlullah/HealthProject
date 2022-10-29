@@ -16,14 +16,14 @@ public class BackgroundStepDefs {
 
     HomePage homePage = new HomePage();
 
-    @Given("user goes to URL {string}")
-    public void userGoesToURL(String arg0) {
+    @Given("user goes to URL")
+    public void userGoesToURL() {
         Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
     }
 
-    @Then("verify the page title contains {string}")
-    public void verify_the_page_title_contains(String title) {
-        Assert.assertTrue(Driver.getDriver().getTitle().contains(title));
+    @Then("verify the page title contains MEDUNNA")
+    public void verify_the_page_title_contains() {
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("MEDUNNA"));
     }
     @When("user navigates on the login page")
     public void user_navigates_on_the_login_page() {

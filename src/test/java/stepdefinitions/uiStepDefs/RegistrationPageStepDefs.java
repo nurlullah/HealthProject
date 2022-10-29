@@ -15,20 +15,10 @@ import utilities.JSUtils;
 
 public class RegistrationPageStepDefs {
 
-    HomePage homePage = new HomePage();
+
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
 
-    @Given("Open the URL {string}")
-    public void open_the_url(String string) {
-        Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
-    }
-
-
-    @Then("Verify the page title contains MEDUNNA")
-    public void verify_the_page_title_contains_medunna() {
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("MEDUNNA"));
-    }
 
     @Then("Verify Registration text")
     public void verify_registration_text() {
@@ -76,12 +66,7 @@ public class RegistrationPageStepDefs {
     public void user_goes_to_the_medunna_url() {
         Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
     }
-    @When("User clicks the sign in symbol and register dropdown button")
-    public void user_clicks_the_sign_in_symbol_and_register_dropdown_button() {
-        homePage.signInAndAccountIcon.click();
-        Driver.wait(1);
-        homePage.register.click();
-    }
+
     @Then("User enters ssn {string}")
     public void userEntersSsn(String ssn) {
         Driver.sleep(1000);
@@ -220,14 +205,7 @@ public class RegistrationPageStepDefs {
         }
     }
 
-    @When("Click on the sign in and account icon")
-    public void click_OnTheSignInAndAccountIcon() {
-        homePage.signInAndAccountIcon.click();
-    }
-    @And("Click on Register Button")
-    public void click_OnRegisterButton() {
-        homePage.register.click();
-    }
+
     @When("Type the valid ssn as {string}")
     public void type_the_valid_ssn_as(String ssn) {
         registrationPage.ssn.sendKeys(ssn, Keys.ENTER);

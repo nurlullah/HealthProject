@@ -114,10 +114,7 @@ public class HomePageStepDefs {
     public void user_click_valid_phone_number_that_contains_after_3th_and_6th_digits_and_can_not_be_blank(String string) {
         homePage.phoneNumber.sendKeys("546-965-2284");
     }
-    @When("user click on the sign in and register icon")
-    public void user_click_on_the_sign_in_and_register_icon() {
-        physicianMyAppointmentPage.signInRegisterIcon.click();
-    }
+
     @When("user click on Sign in button")
     public void user_click_on_sign_in_button() {
         homePage.signInButton.click();
@@ -143,16 +140,7 @@ public class HomePageStepDefs {
     public void user_click_on_the_sign_in_button() {
         homePage.signInButton.click();
     }
-    @And("user click on the My Pages\\/Patients icon")
-    public void userClickOnTheMyPagesPatientsIcon() {
 
-        physicianMyAppointmentPage.myPagesIcon.click();
-    }
-
-    @When("user click on the My Appointments icon")
-    public void user_click_on_the_my_appointments_icon() {
-        physicianMyAppointmentPage.myAppointments.click();
-    }
     @Then("user click on the from box")
     public void user_click_on_the_from_box() {
         physicianMyAppointmentPage.fromDate.click();
@@ -185,5 +173,11 @@ public class HomePageStepDefs {
     @Then("user click on the name")
     public void user_click_on_the_name() {
         physicianMyAppointmentPage.appointment276238.click();
+    }
+    @When("User clicks the sign in symbol and register dropdown button")
+    public void user_clicks_the_sign_in_symbol_and_register_dropdown_button() {
+        homePage.signInAndAccountIcon.click();
+        Driver.wait(1);
+        homePage.register.click();
     }
 }

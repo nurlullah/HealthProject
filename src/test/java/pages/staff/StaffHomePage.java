@@ -11,4 +11,7 @@ public class StaffHomePage {
     }
     @FindBy(xpath = "//*[(text()='MY PAGES')]")//staffda gözüküyor
     public WebElement myPagesButton;
+
+    @FindBy(xpath = "//*[@data-icon='search']")
+    public WebElement searchPatientDropdown;
 }

@@ -1,7 +1,7 @@
 Feature: Registration related features
   Background:
-    Given user goes to URL "https://www.medunna.com/"
-    Then verify the page title contains "MEDUNNA"
+    Given user goes to URL
+    Then verify the page title contains MEDUNNA
     When User clicks the sign in symbol and register dropdown button
     Then Verify Registration text
 

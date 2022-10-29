@@ -10,18 +10,18 @@ public class AccountSettingsPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(css = "input#firstName']")
+    @FindBy(xpath = "//input[@id='firstName']")
     public WebElement firstNameBox;
 
-    @FindBy(css = "input#lastName")
+    @FindBy(xpath = "//input[@id='lastName']")
     public WebElement lastNameBox;
 
-    @FindBy(css = "input#email]")
+    @FindBy(id = "email")
     public WebElement emailBox;
 
     @FindBy(css = "button[type='submit']")
     public WebElement saveButton;
 
-    @FindBy(className = "Toastify")
+    @FindBy(xpath = "//*[(text()='Settings saved!')]")
     public WebElement alert;
 }

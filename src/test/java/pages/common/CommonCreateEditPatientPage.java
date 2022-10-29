@@ -2,8 +2,11 @@ package pages.common;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
+
+import java.util.List;
 
 public class CommonCreateEditPatientPage {
 
@@ -67,10 +70,22 @@ public class CommonCreateEditPatientPage {
 
     @FindBy(xpath = "//button[@id='save-entity']")
     public WebElement saveButton;
+    @FindBy(xpath = "//input[@name='id']")
+    public WebElement idTextBox;
+    @FindBy(xpath = "//select[@name='gender']//option")
+    public WebElement genderDropDown1;
+    @FindBy(xpath = "//select[@name='bloodGroup']//option")
+    public WebElement bloodGroupDropDown1;
+    @FindBy(xpath = "//select[@name='user.id']//option")
+    public WebElement userDropDown1;
+    @FindBy(xpath = "//select[@name='country.id']//option[2]")
+    public WebElement countryDropDown1;
+    @FindBy(xpath = "//select[@name='cstate.id']//option")
+    public WebElement stateCityDropDown1;
 
-
-
-
-
+    @FindBy(xpath = "//*[@role='alert']")
+    public WebElement alert;
+    @FindBys(@FindBy(xpath = "//*[@id='app-view-container']//table/tbody/tr"))
+    public List<WebElement> tableInfo;
 
 }
