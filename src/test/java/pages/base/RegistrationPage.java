@@ -60,6 +60,7 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//span[text()='Registration']")
     public WebElement registrationText;
+
     @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]" )
     public WebElement textInvalidSSN;
 
