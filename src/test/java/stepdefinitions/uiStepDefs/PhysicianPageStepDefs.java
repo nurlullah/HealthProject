@@ -78,4 +78,14 @@ public class PhysicianPageStepDefs {
         physicianMyAppointmentPage.appointment276238.click();
     }*/
 
+    /*
+    @When("user click on the sign in and register icon")
+    public void user_click_on_the_sign_in_and_register_icon() {
+        physicianMyAppointmentPage.signInRegisterIcon.click();
+    } Hata veriyor!!
+    */
+
+
+
+
 }

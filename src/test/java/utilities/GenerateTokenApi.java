@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static io.restassured.RestAssured.given;
 public class GenerateTokenApi {
-    public static String getToken(){
+    public static String getToken(String username, String password){
         RequestSpecification spec = new RequestSpecBuilder().setBaseUri("https://medunna.com").build();
         spec.pathParams("first" , "api", "second" , "authenticate");
         //Set the expected data
@@ -20,8 +20,8 @@ public class GenerateTokenApi {
 }
          */
         Map<String, Object> expectedData = new HashMap<>();
-        expectedData.put("username", "Batch86");
-        expectedData.put("password", "Batch86+");
+        expectedData.put("username", username);
+        expectedData.put("password", password);
         expectedData.put("rememberMe", true);
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}/{second}");
         JsonPath json = response.jsonPath();

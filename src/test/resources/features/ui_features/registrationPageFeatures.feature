@@ -1,7 +1,7 @@
 Feature: Registration related features
   Background:
-    Given user goes to URL "https://www.medunna.com/"
-    Then verify the page title contains "MEDUNNA"
+    Given user goes to URL
+    Then verify the page title contains MEDUNNA
     When User clicks the sign in symbol and register dropdown button
     Then Verify Registration text
 
@@ -108,12 +108,12 @@ Feature: Registration related features
       | .         |  xyzt     |   xyzt        |
       | 1         |  XYZT     |   XYZT        |
       | a         |  1234     |   1234        |
-      | B         |  @*%$     |   @*%$        |
+      | B         |  @%$     |   @%$        |
       | ½         |  Xy1*     |   Xy1*        |
 
 
-    @US02_Email_Test @smoke_test
-    Scenario Outline: US02_Email_Test
+  @US02_Email_Test @smoke_test
+  Scenario Outline: US02_Email_Test
     And Enter SSN number Faker
     And Enter First Name Faker
     And Enter Last Name Faker
@@ -121,11 +121,11 @@ Feature: Registration related features
     And Enter "<email>" box without @ sign and .
     Then Verify the This field is invalid is displayed. text
     And User closes the application
-      Examples:
-        | email           |
-        |nurullahgmail.com|
-        |nurullah@gmailcom|
-        |nurullahgmailcom |
+    Examples:
+      | email           |
+      |nurullahgmail.com|
+      |nurullah@gmailcom|
+      |nurullahgmailcom |
 
 
 
@@ -146,10 +146,10 @@ Feature: Registration related features
     Examples:
       | password |confirmPassword|
       | xyzt     |   xyzt        |
-      | XYZT     |   XYZT        |
-      | 1234     |   1234        |
-      | @*%$     |   @*%$        |
-      | Xy1*     |   Xy1*        |
+      #| XYZT     |   XYZT        |
+      #| 1234     |   1234        |
+      #| @%$     |   @%$        |
+      #| Xy1*     |   Xy1*        |
 
   @us03_tc02 @smoke_test
   Scenario Outline: US03_TC02
@@ -226,6 +226,3 @@ Feature: Registration related features
       | abcdEFG          | 2        |
       | ABxy123          | 3        |
       | XYzt12%          | 4        |
-
-
-

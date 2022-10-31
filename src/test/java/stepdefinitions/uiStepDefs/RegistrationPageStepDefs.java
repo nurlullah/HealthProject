@@ -9,34 +9,17 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.base.HomePage;
 import pages.base.RegistrationPage;
-import utilities.ConfigReader;
+import pojos.User;
 import utilities.Driver;
 import utilities.JSUtils;
+import utilities.ReusableMethods;
 
 public class RegistrationPageStepDefs {
 
-    HomePage homePage = new HomePage();
+
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
-
-
-    @Given("user goes to URL {string}")
-    public void userGoesToURL(String arg0) {
-        Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
-    }
-
-    @Then("verify the page title contains {string}")
-    public void verifyThePageTitleContains(String arg0) {
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("MEDUNNA"));
-    }
-
-    @When("User clicks the sign in symbol and register dropdown button")
-    public void user_clicks_the_sign_in_symbol_and_register_dropdown_button() {
-        homePage.signInAndAccountIcon.click();
-        Driver.wait(1);
-        homePage.register.click();
-    }
-
+    User user = new User();
 
     @Then("Verify Registration text")
     public void verify_registration_text() {
@@ -48,27 +31,31 @@ public class RegistrationPageStepDefs {
     @When("Enter SSN number Faker")
     public void enter_ssn_number_Faker() {
         Driver.wait(1);
-        registrationPage.ssn.sendKeys(Faker.instance().idNumber().ssnValid());
+        user.setSsn(faker.idNumber().ssnValid());
+        registrationPage.ssn.sendKeys(user.getSsn());
 
     }
 
     @When("Enter First Name Faker")
     public void enter_first_name_Faker() {
         Driver.wait(1);
-        registrationPage.firstName.sendKeys(Faker.instance().name().firstName());
+        user.setFirstname(faker.name().firstName());
+        registrationPage.firstName.sendKeys(user.getFirstname());
 
     }
 
     @When("Enter Last Name Faker")
     public void enter_last_name_Faker() {
         Driver.wait(1);
-        registrationPage.lastName.sendKeys(Faker.instance().name().lastName());
+        user.setLastName(faker.name().lastName());
+        registrationPage.lastName.sendKeys(user.getLastName());
 
     }
 
     @When("Click on the username box and click  Enter")
     public void click_on_the_username_box_and_click_enter() {
         Driver.wait(1);
+
         registrationPage.userName.sendKeys(Keys.ENTER);
 
     }
@@ -83,7 +70,8 @@ public class RegistrationPageStepDefs {
     @When("Enter any chars on the {string}")
     public void enterAnyCharsOnThe(String username) {
         Driver.wait(1);
-        registrationPage.userName.sendKeys(username);
+        user.setLogin(username);
+        registrationPage.userName.sendKeys(user.getLogin());
 
     }
 
@@ -92,6 +80,7 @@ public class RegistrationPageStepDefs {
 
         Driver.sleep(1000);
         Driver.waitAndSendText(registrationPage.newPassword, password, 5);
+        user.setPassword(password);
 
     }
 
@@ -119,6 +108,7 @@ public class RegistrationPageStepDefs {
     public void user_enters_seven_chars_that_possibilities_with_three_combinations(String password) {
         Driver.sleep(1000);
         Driver.waitAndSendText(registrationPage.newPassword, password, 5);
+
     }
 
     @Then("User verifies password with four chart green color is {string}")
@@ -165,6 +155,7 @@ public class RegistrationPageStepDefs {
     public void user_clicks_the_register_button() {
         JSUtils.clickElementByJS(registrationPage.registerButton);
         Driver.wait(1);
+        ReusableMethods.storeObjectInAFile(user);
         //FileWriterForData class ını kullanarak datalarımızı pojodaki tüm bilgilerle kaydetmiş oluyoruz
         //saveData(registrationPojo); sadece bu şekilde import ederek de kullanbiliriz. çünkü method static
         //FileWriterForData.saveData(registrationPojo);
@@ -180,6 +171,7 @@ public class RegistrationPageStepDefs {
     public void user_closes_the_application() {
         Driver.closeDriver();
     }
+
 
     //method
     public void colorStrength(String level) {
@@ -273,7 +265,6 @@ public class RegistrationPageStepDefs {
         System.out.println(registrationPage.textRequiredFirstName.getText());
     }
 
-
     @Then("Verify text that equals {string}")
     public void verify_TextThatEquals(String text) {
         Assert.assertTrue(registrationPage.textRequiredLastName.getText().contains(text));
@@ -292,12 +283,14 @@ public class RegistrationPageStepDefs {
 
     @And("Enter Username Faker")
     public void enterUsernameFaker() {
-        registrationPage.userName.sendKeys(Faker.instance().name().username());
+        user.setLogin(faker.name().username());
+        registrationPage.userName.sendKeys(user.getLogin());
     }
 
     @And("Enter Email Address Faker")
     public void enterEmailAddressFaker() {
-        registrationPage.email.sendKeys(Faker.instance().internet().emailAddress());
+        user.setEmail(faker.internet().emailAddress());
+        registrationPage.email.sendKeys(user.getEmail());
     }
 
     @And("Enter {string} box without @ sign and .")
@@ -305,11 +298,9 @@ public class RegistrationPageStepDefs {
         registrationPage.email.sendKeys(email, Keys.ENTER);
     }
 
-    @Then("Verify the This field is invalid is displayed. text")
-    public void verifyTheThisFieldIsInvalidIsDisplayedText() {
-        Driver.wait(1);
-        Assert.assertTrue(registrationPage.thisFileIsInvalidEmailText.isDisplayed());
-
-    }
+//    @Then("Verify the This field is invalid is displayed. text")
+//    public void verifyTheThisFieldIsInvalidIsDisplayedText() {
+//        Driver.wait(1);
+//        Assert.assertTrue(registrationPage.thisFileIsInvalidEmailText.isDisplayed());
+// }
 }
-

@@ -11,12 +11,7 @@ public class PhysicianMyAppointmentPage {
     PageFactory.initElements(Driver.getDriver(),this);
 
 }
-
-
-
-
-
-    @FindBy(xpath = "//h2[text()='Appointments']")
+   @FindBy(xpath = "//h2[text()='Appointments']")
     public WebElement appointmentsHeading;
 
     @FindBy(css = "#fromDate")

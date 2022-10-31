@@ -10,7 +10,6 @@ public class RegistrationPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
     @FindBy(id = "ssn")
     public WebElement ssn;
 
@@ -61,6 +60,7 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//span[text()='Registration']")
     public WebElement registrationText;
+
     @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]" )
     public WebElement textInvalidSSN;
 
@@ -69,9 +69,6 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//*[text()='Your LastName is required.']" )
     public WebElement textRequiredLastName;
-
-    @FindBy(xpath = "//*[@id='register-form']/div[5]/div")
-    public WebElement thisFileIsInvalidEmailText;
 
 
 }
