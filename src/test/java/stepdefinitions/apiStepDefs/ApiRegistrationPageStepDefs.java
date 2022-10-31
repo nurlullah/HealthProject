@@ -23,7 +23,7 @@ public class ApiRegistrationPageStepDefs {
       spec.pathParams("first","api","second","users").queryParams("size",15000);
 
       //send the request
-       response =given().headers("Authorization","Bearer "+getToken(),
+       response =given().headers("Authorization","Bearer "+getToken("Batch86","Batch86+"),
                 "Content-Type", ContentType.JSON,
                 "Accept",ContentType.JSON).spec(spec).when().get("/{first}/{second}");
 

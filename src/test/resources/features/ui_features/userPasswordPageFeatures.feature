@@ -7,7 +7,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
@@ -27,7 +27,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
@@ -48,7 +48,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
@@ -68,7 +68,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
@@ -88,7 +88,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
@@ -108,7 +108,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
@@ -129,7 +129,7 @@ Feature: password_edition
 
     Given user opens the URL "https://www.medunna.com/"
     When user navigate to user icon
-    When user click on Sign in button
+    When user click on Sign in button password page
     And user enters username as "<username>" and password as "<password>" and click on Sign in button
     And  navigate to userId
     And click  password button
