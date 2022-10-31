@@ -28,8 +28,8 @@ public class UserPasswordPageStepDefs {
     }
 
 
-    @When("user click on Sign in button")
-    public void user_click_on_sign_in_button() {
+    @When("user click on Sign in button password page")
+    public void user_click_on_sign_in_button_password_page() {
         Driver.wait(3);
         ReusableMethods.waitForClickablility(homePage.signIn, 3);
         homePage.signIn.click();

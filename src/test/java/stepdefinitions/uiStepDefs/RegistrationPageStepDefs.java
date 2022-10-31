@@ -298,9 +298,9 @@ public class RegistrationPageStepDefs {
         registrationPage.email.sendKeys(email, Keys.ENTER);
     }
 
-//    @Then("Verify the This field is invalid is displayed. text")
-//    public void verifyTheThisFieldIsInvalidIsDisplayedText() {
-//        Driver.wait(1);
-//        Assert.assertTrue(registrationPage.thisFileIsInvalidEmailText.isDisplayed());
-// }
+    @Then("Verify the This field is invalid is displayed. text")
+    public void verifyTheThisFieldIsInvalidIsDisplayedText() {
+        Driver.wait(1);
+        Assert.assertTrue(registrationPage.thisFileIsInvalidEmailText.isDisplayed());
+ }
 }
