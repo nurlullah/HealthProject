@@ -6,6 +6,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import java.util.HashMap;
 import java.util.Map;
+
+import static baseurl.MedunnaBaseUrl.spec;
 import static io.restassured.RestAssured.given;
 public class GenerateTokenApi {
     public static String getToken(){
@@ -28,4 +30,6 @@ public class GenerateTokenApi {
         String token = json.getString("id_token");
         return token;
     }
+
+
 }

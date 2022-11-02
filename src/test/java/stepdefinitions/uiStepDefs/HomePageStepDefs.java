@@ -8,21 +8,55 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.base.HomePage;
-import pojos.AppointmentRequest;
 import pages.physician.PhysicianMyAppointmentPage;
+import pojos.AppointmentRequest;
+import pojos.User;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.ReusableMethods;
+
+import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class HomePageStepDefs {
+
     HomePage homePage = new HomePage();
     Faker faker = new Faker();
-    AppointmentRequest appointmentRequest = new AppointmentRequest();
+    AppointmentRequest appointmentRequest= new AppointmentRequest();
+    User user;
 
+    {
+        try {
+            user = (User) ReusableMethods.readFileToGetObject("User.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @When("click  password button")
+    public void click_password_button() {
+        // ReusableMethods.waitForClickablility(homePage.password, 3);
+        Driver.wait(2);
+        homePage.password.click();
+    }
+
+    @When("user enters username as {string} and password as {string} and click on Sign in button")
+    public void user_enters_username_as_and_password_as_and_click_on_sign_in_button(String username, String password) {
+        homePage.usernameBox.sendKeys(username);
+        homePage.passwordBox.sendKeys(password);
+        homePage.signInSubmitButton.click();
+        Driver.wait(3);
+    }
+
+    @When("User clicks the sign in symbol and register dropdown button")
+    public void user_clicks_the_sign_in_symbol_and_register_dropdown_button() {
+        homePage.signInAndAccountIcon.click();
+        Driver.wait(1);
+        homePage.register.click();
+    }
     @Then("user click on the make an appointment icon")
     public void user_click_on_the_make_an_appointment_icon() {
 
@@ -35,9 +69,8 @@ public class HomePageStepDefs {
 
     @Then("user types the firstname on homepage appointment")
     public void user_types_the_firstname_on_homepage_appointment() {
-        appointmentRequest.setFirstName(faker.name().firstName());
-        homePage.firstName.sendKeys(appointmentRequest.getFirstName());
-
+        homePage.firstName.sendKeys(user.getFirstname());
+        appointmentRequest.setFirstName(user.getFirstname());
         ReusableMethods.waitFor(3);
     }
 
@@ -79,7 +112,8 @@ public class HomePageStepDefs {
         Assert.assertEquals((char)ssn.charAt(6), '-');
         homePage.ssn.sendKeys(ssn);*/
 
-        homePage.ssn.sendKeys(faker.idNumber().ssnValid());
+        homePage.ssn.sendKeys(user.getSsn());
+        appointmentRequest.setSsn(user.getSsn());
     }
     @Then("user clicks on enter button on lastname box on homepage")
     public void user_clicks_on_enter_button_on_lastname_box_on_homepage() {
@@ -91,8 +125,8 @@ public class HomePageStepDefs {
     }
     @Then("user types the lastname on homepage appointment")
     public void user_types_the_lastname_on_homepage_appointment() {
-        homePage.lastName.sendKeys(faker.name().lastName());
-
+        homePage.lastName.sendKeys(user.getLastName());
+        appointmentRequest.setLastName(user.getLastName());
     }
     @Then("user clicks on enter button on email box on homepage")
     public void user_clicks_on_enter_button_on_email_box_on_homepage() {
@@ -112,13 +146,14 @@ public class HomePageStepDefs {
     }
     @Then("user types valid email on homepage appointment.")
     public void user_types_valid_email_on_homepage_appointment() {
-        homePage.email.sendKeys(faker.internet().emailAddress());
-        System.out.println(homePage.email.getText());
+        homePage.email.sendKeys(user.getEmail());
+        appointmentRequest.setEmail(user.getEmail());
     }
 
     @Then("user clicks on enter button on phone box on homepage")
     public void user_clicks_on_enter_button_on_phone_box_on_homepage() {
         homePage.phoneNumber.sendKeys(Keys.ENTER);
+
     }
     @Then("verify that Your phone is required alert is displayed")
     public void verify_that_your_phone_is_required_alert_is_displayed() {
@@ -136,8 +171,9 @@ public class HomePageStepDefs {
     public void user_types_valid_phone_on_homepage_appointment() {
         //  ReusableMethods.waitFor(1);
         homePage.phoneNumber.clear();
+        appointmentRequest.setPhone(faker.number().digits(10));
+        homePage.phoneNumber.sendKeys(appointmentRequest.getPhone());
 
-        homePage.phoneNumber.sendKeys(faker.number().digits(10));
     }
 
 
@@ -164,7 +200,7 @@ public class HomePageStepDefs {
         ReusableMethods.waitFor(3);
         Driver.waitForClickablility(homePage.sendAnAppointmentRequest,5);
         homePage.sendAnAppointmentRequest.click();
-
+        ReusableMethods.storeObjectInAFile(appointmentRequest,"appointmentrequest.txt");
     }
     @Then("Verify the Appointment registration saved. We will call you as soon as possible alert")
     public void verify_the_appointment_registration_saved_we_will_call_you_as_soon_as_possible_alert() {
@@ -205,7 +241,7 @@ public class HomePageStepDefs {
 
         String date = appointmentRequest.getStartDate();
 
-       Assert.assertTrue(ReusableMethods.isValidFormat("dd.mm.yyyy",date));
+        Assert.assertTrue(ReusableMethods.isValidFormat("dd.mm.yyyy",date));
     }
 
 }

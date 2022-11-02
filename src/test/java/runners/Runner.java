@@ -15,11 +15,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features/ui_features",
         glue = {"stepdefinitions","hooks"},
-<<<<<<< Updated upstream
-        tags = "@UserSettings",
-=======
-        tags = "@us07_TC01_02",
->>>>>>> Stashed changes
+        tags = "@us07_TC01_01 ",
         dryRun = false
 )
 public class Runner {

@@ -3,7 +3,7 @@ Feature: appointment related features
 
   @userApi
   Scenario: user api data request
-    Given user sends a get request for users
+    Given user sends a get request for appointments
     And user converts user records to Java
     Then user validates user data
 

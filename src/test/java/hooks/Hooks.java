@@ -14,19 +14,19 @@ import static baseurl.MedunnaBaseUrl.medunnaSetUp;
 
 public class Hooks {
     //    SKIPPING THE TAG THAT IS IN THE BEFORE ANNOTATION
-//    IN THIS EXAMPLE @skip_scenario tagged scenarios will be skipped
+    //    IN THIS EXAMPLE @skip_scenario tagged scenarios will be skipped
     @Before(value = "@skip_scenario")
     public void setUp(Scenario scenario) {
-//        RUNS BEFORE EACH SCENARIO
+    //     RUNS BEFORE EACH SCENARIO
         System.out.println("SKIPPED : " + scenario.getName());
         Assume.assumeTrue(false);//
     }
 
     @After
     public void tearDown(Scenario scenario) {
-//        RUNS AFTER EACH SCENARIO
-//        System.out.println("After Hooks");
-//        Adding Reports that is generated when a scenario FAILS
+    //        RUNS AFTER EACH SCENARIO
+    //        System.out.println("After Hooks");
+    //        Adding Reports that is generated when a scenario FAILS
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "failed_scenario"); }
@@ -38,5 +38,8 @@ public class Hooks {
     public void beforeRegistrationApi (){
         medunnaSetUp();
     }
-
+    @Before(value = "@appointment_api")
+    public void beforeAppointmentApi (){
+         medunnaSetUp();
+    }
 }
