@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features/api_features",//MUST
         glue = {"stepdefinitions","hooks"},//MUST
-        tags = "@appointment_api",
+        tags = "@GetPhysiciansAllInfo",
         dryRun = false
 )
 public class Runner {
