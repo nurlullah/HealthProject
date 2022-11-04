@@ -10,16 +10,16 @@ import org.openqa.selenium.Keys;
 import pages.base.HomePage;
 import pages.base.RegistrationPage;
 import pojos.User;
-import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 public class RegistrationPageStepDefs {
+
+
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
     User user = new User();
-
 
     @Then("Verify Registration text")
     public void verify_registration_text() {
@@ -155,7 +155,7 @@ public class RegistrationPageStepDefs {
     public void user_clicks_the_register_button() {
         JSUtils.clickElementByJS(registrationPage.registerButton);
         Driver.wait(1);
-        ReusableMethods.storeObjectInAFile(user, "user.txt");
+        ReusableMethods.storeObjectInAFile(user);
         //FileWriterForData class ını kullanarak datalarımızı pojodaki tüm bilgilerle kaydetmiş oluyoruz
         //saveData(registrationPojo); sadece bu şekilde import ederek de kullanbiliriz. çünkü method static
         //FileWriterForData.saveData(registrationPojo);
@@ -302,9 +302,5 @@ public class RegistrationPageStepDefs {
     public void verifyTheThisFieldIsInvalidIsDisplayedText() {
         Driver.wait(1);
         Assert.assertTrue(registrationPage.thisFileIsInvalidEmailText.isDisplayed());
-
     }
-
-
 }
-

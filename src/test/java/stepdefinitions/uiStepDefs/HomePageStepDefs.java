@@ -1,10 +1,7 @@
 package stepdefinitions.uiStepDefs;
 
 import com.github.javafaker.Faker;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.base.HomePage;
@@ -62,6 +59,7 @@ public class HomePageStepDefs {
 
         homePage.makeAppointment.click();
     }
+
     @Then("user clicks on enter button on firstname box on homepage")
     public void user_clicks_on_enter_button_on_firstname_box_on_homepage() {
         homePage.firstName.sendKeys(Keys.ENTER);
@@ -114,6 +112,7 @@ public class HomePageStepDefs {
 
         homePage.ssn.sendKeys(user.getSsn());
         appointmentRequest.setSsn(user.getSsn());
+        homePage.ssn.sendKeys(faker.idNumber().ssnValid());
     }
     @Then("user clicks on enter button on lastname box on homepage")
     public void user_clicks_on_enter_button_on_lastname_box_on_homepage() {
@@ -169,7 +168,6 @@ public class HomePageStepDefs {
     }
     @Then("user types valid phone on homepage appointment.")
     public void user_types_valid_phone_on_homepage_appointment() {
-        //  ReusableMethods.waitFor(1);
         homePage.phoneNumber.clear();
         appointmentRequest.setPhone(faker.number().digits(10));
         homePage.phoneNumber.sendKeys(appointmentRequest.getPhone());
@@ -200,7 +198,7 @@ public class HomePageStepDefs {
         ReusableMethods.waitFor(3);
         Driver.waitForClickablility(homePage.sendAnAppointmentRequest,5);
         homePage.sendAnAppointmentRequest.click();
-        ReusableMethods.storeObjectInAFile(appointmentRequest,"appointmentrequest.txt");
+   //     ReusableMethods.storeObjectInAFile(appointmentRequest,"appointmentrequest.txt");
     }
     @Then("Verify the Appointment registration saved. We will call you as soon as possible alert")
     public void verify_the_appointment_registration_saved_we_will_call_you_as_soon_as_possible_alert() {
@@ -224,6 +222,9 @@ public class HomePageStepDefs {
     }
     @Then("verify that send appointment request button is unclickable")
     public void verify_that_send_appointment_request_button_is_unclickable() {
+
+
+
 
         Assert.assertFalse(homePage.sendAnAppointmentRequest.isEnabled());
     }

@@ -13,7 +13,35 @@ import utilities.ReusableMethods;
 public class UserPasswordPageStepDefs {
 
     AccountPasswordPage userPasswordPage= new AccountPasswordPage();
+    HomePage homePage = new HomePage();
 
+
+    @Given("user opens the URL {string}")
+    public void user_opens_the_url(String url) {
+        Driver.getDriver().get(url);
+    }
+
+    @When("user navigate to user icon")
+    public void user_navigate_to_user_icon() {
+        Driver.wait(1);
+        homePage.signInAndAccountIcon.click();
+    }
+
+
+    @When("user click on Sign in button password page")
+    public void user_click_on_sign_in_button_password_page() {
+        Driver.wait(3);
+        ReusableMethods.waitForClickablility(homePage.signIn, 3);
+        homePage.signIn.click();
+    }
+
+    @When("user enters username as {string} and password as {string} and click on Sign in button")
+    public void user_enters_username_as_and_password_as_and_click_on_sign_in_button(String username, String password) {
+        homePage.usernameBox.sendKeys(username);
+        homePage.passwordBox.sendKeys(password);
+        homePage.signInSubmitButton.click();
+        Driver.wait(3);
+    }
 
     @When("navigate to userId")
     public void navigate_to_user_id() throws InterruptedException {
@@ -23,6 +51,12 @@ public class UserPasswordPageStepDefs {
         Driver.wait(2);
     }
 
+    @When("click  password button")
+    public void click_password_button() {
+        // ReusableMethods.waitForClickablility(homePage.password, 3);
+        Driver.wait(2);
+        homePage.password.click();
+    }
 
     @When("send current {string}")
     public void send_current(String password) {

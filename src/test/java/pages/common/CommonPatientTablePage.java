@@ -109,5 +109,6 @@ public class CommonPatientTablePage {
     @FindBy(xpath = "//input[@name='ssn']")
     public WebElement searchSsn;
 
-
+    @FindBy(xpath = "//a[contains(@class, 'btn-primary')]")
+    public WebElement editButton;
 }

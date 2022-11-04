@@ -1,5 +1,6 @@
 package utilities;
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
@@ -170,26 +171,14 @@ public class ReusableMethods {
         select.selectByIndex(optionIndex);
         return select.getFirstSelectedOption();
     }
-    public static boolean isValidFormat(String format, String value) {
-        Date date = null;
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
-            date = sdf.parse(value);
-            if (!value.equals(sdf.format(date))) {
-                date = null;
-            }
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        return date != null;
-    }
-    public static void storeObjectInAFile(Object obj, String filename ) {
+
+    public static void storeObjectInAFile(Object obj) {
         try {
 
             // Create a FileOutputStream Object by passing text file
             // name which will be used to store the object state
 
-            FileOutputStream fos = new FileOutputStream(filename);
+            FileOutputStream fos = new FileOutputStream("User.txt");
 
             // Create a ObjectOutputStream object which wraps
             // object of FileOutputStream thus helping to pass object
@@ -249,5 +238,21 @@ public class ReusableMethods {
         return obj;
 
     }
-}
+    public static boolean isValidFormat(String format, String value) {
+        Date date = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            date = sdf.parse(value);
+            if (!value.equals(sdf.format(date))) {
+                date = null;
+            }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        return date != null;
+    }
 
+
+
+
+}

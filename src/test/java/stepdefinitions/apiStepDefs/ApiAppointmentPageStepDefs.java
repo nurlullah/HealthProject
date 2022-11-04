@@ -21,9 +21,9 @@ public class ApiAppointmentPageStepDefs {
     public void user_sends_a_get_request_for_appointments() {
 
           // set the URL
-          spec.pathParams("first","api", "second", "physician").queryParams("size",15000);
+          spec.pathParams("first","api", "second", "appointments").queryParams("size",15000);
     //send the request
-          response =given().headers("Authorization","Bearer "+getToken(),
+          response =given().headers("Authorization","Bearer "+getToken("team02_physician","bilge_dede"),
                   "Content-Type", ContentType.JSON,
                   "Accept",ContentType.JSON).spec(spec).when().get("/{first}/{second}");
 
