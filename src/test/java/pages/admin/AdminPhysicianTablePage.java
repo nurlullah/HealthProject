@@ -102,4 +102,34 @@ public class AdminPhysicianTablePage {
 
     @FindBy(xpath = "(//span[.='Edit'])[1]")
     public WebElement delete; //ID 276296
+
+    @FindBy(xpath = "//a[@href='/physician/3651/edit?page=1&sort=id,asc']")
+    public WebElement edit_id;
+
+    @FindBy(xpath ="//a[@href='/country/1202']")
+    public WebElement moveTurkey;
+
+    @FindBy(xpath = "//input[@name='examFee']")
+    public WebElement editExamFee;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement editSaveButton;
+
+    @FindBy(xpath = "//a[@href='/physician/\" + id + \"/delete?page=1&sort=id,desc']")
+    public WebElement deleteButton;
+
+    @FindBy(xpath = "//div/h2[.]")
+    public WebElement unexpectedErrorMessage;
+
+    @FindBy(xpath = "//div[.='A Physician is updated with identifier 3651']")
+    public WebElement editConfirmationMessage;
+
+
+
+
+
+
+
+
+
 }

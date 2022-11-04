@@ -1,13 +1,19 @@
 package stepdefinitions.uiStepDefs;
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import pages.admin.AdminHomePage;
+import pages.admin.AdminPhysicianTablePage;
 import pages.common.CommonCreateEditPatientPage;
 import pages.common.CommonPatientTablePage;
 import pojos.Country;
@@ -15,13 +21,16 @@ import pojos.Patient;
 import pojos.StateCity;
 import pojos.User;
 import utilities.Driver;
+import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static utilities.FileWriterForData.saveUIAdminPatientData;
+import static utilities.ReusableMethods.waitFor;
 
 public class AdminPageStepDefs {
 
@@ -33,6 +42,8 @@ public class AdminPageStepDefs {
     User user = new User();
     Country country = new Country();
     StateCity city = new StateCity();
+    AdminPhysicianTablePage adminPhysicianTablePage =new AdminPhysicianTablePage();
+    JavascriptExecutor jsexecutor = ((JavascriptExecutor) Driver.getDriver());
 
 
     @When("user navigates to patients page")
@@ -139,5 +150,88 @@ public class AdminPageStepDefs {
         ReusableMethods.waitForVisibility(adminPatientPage.popUp,4);
         Assert.assertTrue(adminPatientPage.popUp.isDisplayed());
         saveUIAdminPatientData(patient);
+    }
+
+
+
+    @When("admin click items&titles button")
+    public void admin_click_items_titles_button() {
+        ReusableMethods.waitForClickablility(adminHomePage.itemsTitlesButton, 5);
+        adminHomePage.itemsTitlesButton.click();
+    }
+
+    @When("Click Physician button")
+    public void click_physician_button() throws InterruptedException {
+        adminHomePage.physicianButton.click();
+        Thread.sleep(3);
+    }
+
+
+    @And("Click view button for physicians {string}")
+    public void clickViewButtonForPhysicians(String id) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).
+                sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).
+                build().perform();
+        ReusableMethods.waitForClickablility(adminPhysicianTablePage.view, 5);
+        adminPhysicianTablePage.view.click();
+    }
+
+    @And("Click edit button for physicians {string}")
+    public void clickEditButtonForPhysicians(String id) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(adminPhysicianTablePage.moveTurkey).perform();
+        ReusableMethods.waitForClickablility(adminPhysicianTablePage.edit_id, 5);
+        adminPhysicianTablePage.edit_id.click();
+    }
+
+    @And("Admin edits physicians some info")
+    public void adminEditsPhysiciansSomeInfo() throws InterruptedException {
+        ReusableMethods.waitForClickablility(adminPhysicianTablePage.editExamFee, 8);
+        adminPhysicianTablePage.editExamFee.clear();
+        Thread.sleep(5);
+        adminPhysicianTablePage.editExamFee.sendKeys("3000");
+        waitFor(5);
+        JSUtils.scrollIntoViewJS(adminPhysicianTablePage.editSaveButton);
+        waitFor(5);
+
+        jsexecutor.executeScript("arguments[0].click();",adminPhysicianTablePage.editSaveButton);
+        waitFor(5);
+    }
+
+    @When("navigate to Administration button")
+    public void navigateToAdministrationButton() {
+      adminHomePage.administrationButton.click();
+    }
+
+    @And("click on User Management")
+    public void clickOnUserManagement() {
+        adminHomePage.userManagementPage.click();
+        waitFor(5);
+    }
+
+    @And("Click delete button for  {string} physicians {string}")
+    public void clickDeleteButtonForPhysicians(String page, String id) {
+        jsexecutor.executeScript("arguments[0].click();",adminPhysicianTablePage.deleteButton);
+    }
+
+    @And("Verify that admin can view Physicians' info")
+    public void verifyThatAdminCanViewPhysiciansInfo() {
+        waitFor(5);
+         Assert.assertFalse(adminPhysicianTablePage.unexpectedErrorMessage.isDisplayed());
+    }
+
+    @And("Verify that admin can edit Physicians' info")
+    public void verifyThatAdminCanEditPhysiciansInfo() {
+        Assert.assertTrue(adminPhysicianTablePage.editConfirmationMessage.isDisplayed());
+    }
+
+    @And("Verify that admin can delete Physicians' info")
+    public void verifyThatAdminCanDeletePhysiciansInfo() {
+    }
+
+    @Then("Close the page Physicians info page")
+    public void close_the_page_physicians_info_page() {
+        Driver.closeDriver();
     }
 }
