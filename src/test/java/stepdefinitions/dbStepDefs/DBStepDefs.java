@@ -1,9 +1,11 @@
 package stepdefinitions.dbStepDefs;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import utilities.DBUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 public class DBStepDefs {
     @Given("user connects to the application database")
@@ -67,5 +69,30 @@ public class DBStepDefs {
         String query = "SELECT * FROM "+table;
         List<String> columnNames = DBUtils.getColumnNames(query);
         Assert.assertTrue(columnNames.contains(column));
+    }
+
+    List<Object> allPhysiciansId ;
+    List<Object> doctorAllInformation;
+
+    @Then("get physicians id from table")
+    public void getPhysiciansIdFromTable() {
+            String query = "SELECT * FROM physician";
+            allPhysiciansId = DBUtils.getColumnData(query,"id");
+            // System.out.println(allPhysiciansId);
+
+            String query1 = "SELECT * FROM physician WHERE id = 10518";
+            doctorAllInformation = DBUtils.getRowList(query1);
+            System.out.println(doctorAllInformation);
+
+    }
+
+    @And("user verifies id as {int}")
+    public void userVerifiesIdAs(Integer id) {
+        List<Integer> allIntDoctorList = new ArrayList<>();
+        for (Object w : allPhysiciansId){
+            allIntDoctorList.add(Integer.parseInt(w.toString()));
+        }
+
+        Assert.assertTrue(allIntDoctorList.contains(id));
     }
 }
