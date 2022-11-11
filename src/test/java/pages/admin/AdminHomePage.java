@@ -47,4 +47,7 @@ public class AdminHomePage {
     @FindBy(css = "a[href='/c-message']")
     public WebElement messageButton;
 
+    @FindBy(xpath = "//*[@id='entity-menu']//a")
+    public WebElement itemTitlesButtonAlternative;
+
 }

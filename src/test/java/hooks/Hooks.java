@@ -11,6 +11,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 
 import static baseurl.MedunnaBaseUrl.medunnaSetUp;
+import static stepdefinitions.RoomApiPreConditionStepDefs.userFindTotalRoomNumber;
 
 public class Hooks {
     //    SKIPPING THE TAG THAT IS IN THE BEFORE ANNOTATION
@@ -38,5 +39,16 @@ public class Hooks {
     public void beforeRegistrationApi (){
         medunnaSetUp();
     }
+
+    @Before(value="@Api_Room")
+    public void beforeRoomApi(){
+        medunnaSetUp();
+    }
+    @Before(value = "@US29_TC2_Api_Room_Reading")
+    public void beforeRoomReadingApi (){
+        userFindTotalRoomNumber();
+    }
+
+
 
 }

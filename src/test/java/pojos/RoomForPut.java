@@ -1,35 +1,9 @@
 package pojos;
 
-
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Room {
-    /*
-    "room": {
-                                      "createdBy": "string",
-                                      "createdDate": "2022-10-22T19:59:35.566Z",
-                                      "description": "string",
-                                      "id": 0,
-                                      "price": 0,
-                                      "roomNumber": 0,
-                                      "roomType": "TWIN",
-                                      "status": true
-                                    },
-     */
-    public static int totalRoomNumber;
-
-    public static int getTotalRoomNumber() {
-        return totalRoomNumber;
-    }
-
-    public static void setTotalRoomNumber(int totalRoomNumber) {
-        Room.totalRoomNumber = totalRoomNumber;
-    }
-
-    private String createdBy;
-    private Date createdDate;
+public class RoomForPut {
     private String description;
     private int id;
     private double price;
@@ -37,12 +11,16 @@ public class Room {
     private String roomType;
     private boolean status;
 
-    public String getCreatedBy() {
-        return createdBy;
+    public RoomForPut(String description, int id, double price, int roomNumber, String roomType, boolean status) {
+        this.description = description;
+        this.id = id;
+        this.price = price;
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.status = status;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public RoomForPut() {
     }
 
     public String getDescription() {
@@ -67,14 +45,6 @@ public class Room {
 
     public boolean isStatus() {
         return status;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
     }
 
     public void setDescription(String description) {
@@ -104,8 +74,6 @@ public class Room {
     @Override
     public String toString() {
         return "Room{" +
-                "createdBy='" + createdBy + '\'' +
-                ", createdDate=" + createdDate +
                 ", description='" + description + '\'' +
                 ", id=" + id +
                 ", price=" + price +
