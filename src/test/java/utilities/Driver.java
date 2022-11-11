@@ -22,7 +22,7 @@ public class Driver {
 
     private static int timeout = 5;
 
-    private Driver() {
+    public Driver() {
 
     }
 

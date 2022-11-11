@@ -23,17 +23,17 @@ public class Hooks {
         Assume.assumeTrue(false);//
     }
 
-    @After
-    public void tearDown(Scenario scenario) {
-//        RUNS AFTER EACH SCENARIO
-//        System.out.println("After Hooks");
-//        Adding Reports that is generated when a scenario FAILS
-        if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", "failed_scenario"); }
-            Driver.closeDriver();
-
-    }
+//    @After
+//    public void tearDown(Scenario scenario) {
+////        RUNS AFTER EACH SCENARIO
+////        System.out.println("After Hooks");
+////        Adding Reports that is generated when a scenario FAILS
+//        if (scenario.isFailed()) {
+//            final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+//            scenario.attach(screenshot, "image/png", "failed_scenario"); }
+//            Driver.closeDriver();
+//
+//    }
 
     @Before(value = "@registrant_api")
     public void beforeRegistrationApi (){
