@@ -28,4 +28,25 @@ public class GenerateTokenApi {
         String token = json.getString("id_token");
         return token;
     }
+    public static String generateToken(){
+        RequestSpecification spec = new RequestSpecBuilder().setBaseUri("https://medunna.com").build();
+        spec.pathParams("first" , "api", "second" , "authenticate");
+        //Set the expected data
+        /*
+        {
+  "password": "string",
+  "rememberMe": true,
+  "username": "string"
+}
+         */
+        Map<String, Object> expectedData = new HashMap<>();
+        expectedData.put("username", "Batch86");
+        expectedData.put("password", "Batch86+");
+        expectedData.put("rememberMe", true);
+        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().post("/{first}/{second}");
+        JsonPath json = response.jsonPath();
+        String token1 = json.getString("id_token");
+        return token1;
+    }
+
 }

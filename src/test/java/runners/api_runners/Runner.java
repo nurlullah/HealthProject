@@ -12,9 +12,9 @@ import org.junit.runner.RunWith;
                 "rerun:target/failedRerun.txt",
                 //"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
         },
-        features = "./src/test/resources/features/api_features",//MUST
+        features = "./src/test/resources/features",//lütfen buraya "/api_features" ı eklemeyin, US gereği API+UI den method çalıştırmam gerekiyor(nesibe)
         glue = {"stepdefinitions","hooks"},//MUST
-        tags = "@GetPhysiciansAllInfo",
+        tags = "@Api_Room",
         dryRun = false
 )
 public class Runner {

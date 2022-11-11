@@ -30,4 +30,35 @@ public class AdminRoomTablePage {
 
     @FindBy(id = "save-entity")
     public WebElement saveButton;
+
+    @FindBy(xpath = "//*[@aria-label='Next']/following::a")
+    public WebElement lastPageArrow;
+
+    @FindBy(xpath = "//*[contains(@class,'jhi-item-count')]")
+    public WebElement roomTotalNumberText;
+
+    @FindBy(xpath = "//*[@id='jh-create-entity']")
+    public WebElement createANewRoomButtonAlternative;
+
+    @FindBy(xpath = "(//*[@id='app-view-container']//td[7])[last()]")
+    public WebElement createdDateOfLastRoom;
+
+    @FindBy(css = "svg[data-icon='eye']")
+    public WebElement viewButton;
+
+    @FindBy (css = "svg[data-icon='pencil-alt']")//direk edit için ve
+    public WebElement editButton;                //viewe tıkladıktan sonraki edit için
+
+    @FindBy (xpath = "(//*[@data-icon='trash'])[last()]")
+    public WebElement lastDeleteButton;
+
+    @FindBy(xpath = "//*[@class='modal-title']")
+    public WebElement confirmDeleteOperationPopup;
+
+    @FindBy (xpath = "(//*[@data-icon='trash'])[last()]")
+    public WebElement popupDeleteButton;
+
+    @FindBy(xpath = "//*[contains(text(),'A Room is deleted')]")
+    public WebElement deletedAlert;
+
 }
