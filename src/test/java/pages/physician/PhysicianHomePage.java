@@ -14,9 +14,22 @@ public class PhysicianHomePage {
     @FindBy(xpath = "//a[@class='d-flex align-items-center dropdown-toggle nav-link']")
     public WebElement myPagesIcon;
 
-    /*@FindBy(xpath = "//a[.='MY PAGES']")
-    public WebElement myPagesIcon;
-*/
+    @FindBy(xpath = "//a[@href='#']")
+    public WebElement myPagesIconAlternative;
+
+    @FindBy(xpath = "//a[.='MY PAGES']")
+    public WebElement myPagesIconn;
+
     @FindBy(xpath = "//a[.='My Appointments']")
     public WebElement myAppointments;
+
+    @FindBy(xpath = "(//a[@href='/ps-in-patient'])[1]")
+    public WebElement myInpatients;
+
+
+
+
+
+
+
 }

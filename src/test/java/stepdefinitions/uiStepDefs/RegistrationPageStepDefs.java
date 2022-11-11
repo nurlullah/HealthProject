@@ -134,6 +134,7 @@ public class RegistrationPageStepDefs {
     public void user_enters_the_confirm(String confirmPassword) {
         Driver.sleep(1000);
         Driver.waitAndSendText(registrationPage.confirmPassword, confirmPassword, 5);
+        Driver.wait(2);
 
     }
 
@@ -154,7 +155,7 @@ public class RegistrationPageStepDefs {
     @Then("User clicks the register button")
     public void user_clicks_the_register_button() {
         JSUtils.clickElementByJS(registrationPage.registerButton);
-        Driver.wait(1);
+        Driver.wait(3);
         ReusableMethods.storeObjectInAFile(user);
         //FileWriterForData class ını kullanarak datalarımızı pojodaki tüm bilgilerle kaydetmiş oluyoruz
         //saveData(registrationPojo); sadece bu şekilde import ederek de kullanbiliriz. çünkü method static
@@ -164,12 +165,15 @@ public class RegistrationPageStepDefs {
     @Then("verify the Registration Saved text")
     public void verifyTheRegistrationSavedText() {
         Assert.assertTrue(registrationPage.registrationText.isDisplayed());
+        Driver.wait(2);
     }
 
     //close the app
     @Then("User closes the application")
     public void user_closes_the_application() {
+        Driver.wait(2);
         Driver.closeDriver();
+
     }
 
 

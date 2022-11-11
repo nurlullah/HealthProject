@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features/ui_features",
         glue = {"stepdefinitions","hooks"},
-        tags = "@us18_part02_tc_02",
+        tags = "@PhysicianViewEditInpatients",
         dryRun = false
 )
 public class Runner {

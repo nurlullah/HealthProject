@@ -26,8 +26,8 @@ public class PhysicianPageStepDefs {
     @And("user click on the My Pages Patients icon")
     public void userClickOnTheMyPagesPatientsIcon() {
         ReusableMethods.waitFor(3);
-        Driver.waitForClickablility(physicianHomePage.myPagesIcon, 3);
-        physicianHomePage.myPagesIcon.click();
+        Driver.waitForClickablility(physicianHomePage.myPagesIconAlternative, 3);
+        physicianHomePage.myPagesIconAlternative.click();
     }
 
     @When("user click on the My Appointments icon")
