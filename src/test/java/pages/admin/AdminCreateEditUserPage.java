@@ -83,6 +83,56 @@ public class AdminCreateEditUserPage {
     @FindBy(xpath = "//span[.='Save']")
     public WebElement save;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement saveButton;
+
+
+    @FindBy(xpath = "//div[@class='Toastify__toast-body']")
+    public WebElement savedTextMessage;
+
+
     @FindBy(css = "i[class='bi bi-arrow-up-short']")
     public WebElement arrowUp;
+
+    @FindBy(xpath = "//*[text()='ID']")
+    public WebElement ID;
+
+    @FindBy(xpath = "//*[text()='Created date']")
+    public WebElement createdDate;
+
+    @FindBy(xpath = "//*[@href='/admin/user-management/new']")
+    public WebElement createANewUserButton;
+
+    @FindBy(xpath = "//*[@aria-label='Next']/following::a")
+    public WebElement lastPage;
+
+    @FindBy(xpath = "(//td/following-sibling::td[10]/div/a[1])[1]")
+    public WebElement adminViewUserButton;
+
+    @FindBy(xpath = "(//td/following-sibling::td[10]/div/a[2])[1]")
+    public WebElement adminEditUserButton;
+
+    @FindBy(xpath = "(//*[@data-icon='trash'])[last()]")
+    public WebElement lastDeleteButton;
+/*
+    @FindBy(xpath = "//*[text()='Confirm delete operation']")
+    public WebElement confirmDeleteOperationPopUp;
+
+ */
+    @FindBy(xpath = "//*[@class='modal-title']")
+    public WebElement confirmDeleteOperationPopup;
+
+    @FindBy(xpath = "(//*[@data-icon='trash'])[last()]")
+    public WebElement confirmDeleteAlertButton;
+
+    @FindBy(xpath = "//*[contains(text(), 'A user is deleted')]")
+    public WebElement userDeletedMessage;
+
+    @FindBy(xpath = "//*[@data-icon='ban']")
+    public WebElement cancelButton;
+
+
+
+
+
 }

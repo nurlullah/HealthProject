@@ -11,12 +11,22 @@ public class PhysicianHomePage {
         PageFactory.initElements(Driver.getDriver(),this);
 
     }
-    @FindBy(xpath = "//a[@class='d-flex align-items-center dropdown-toggle nav-link']")
+    @FindBy(xpath = "//a[@href='#']")
     public WebElement myPagesIcon;
 
-    /*@FindBy(xpath = "//a[.='MY PAGES']")
-    public WebElement myPagesIcon;
-*/
+    @FindBy(xpath = "//a[.='MY PAGES']")
+    public WebElement myPagesIconn;
+
     @FindBy(xpath = "//a[.='My Appointments']")
     public WebElement myAppointments;
+
+    @FindBy(xpath = "(//a[@href='/ps-in-patient'])[1]")
+    public WebElement myInpatients;
+
+
+
+
+
+
+
 }
