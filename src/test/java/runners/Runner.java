@@ -15,11 +15,7 @@ import org.junit.runner.RunWith;
         },
         features = "./src/test/resources/features/ui_features",
         glue = {"stepdefinitions","hooks"},
-<<<<<<< Updated upstream
-        tags = "@us05_TC01",
-=======
-        tags = "@AdminViewEditUserManagementPage",
->>>>>>> Stashed changes
+        tags = "@PhysicianViewEditInpatients",
         dryRun = false
 )
 public class Runner {

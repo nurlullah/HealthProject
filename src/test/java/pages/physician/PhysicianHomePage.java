@@ -11,8 +11,11 @@ public class PhysicianHomePage {
         PageFactory.initElements(Driver.getDriver(),this);
 
     }
-    @FindBy(xpath = "//a[@href='#']")
+    @FindBy(xpath = "//a[@class='d-flex align-items-center dropdown-toggle nav-link']")
     public WebElement myPagesIcon;
+
+    @FindBy(xpath = "//a[@href='#']")
+    public WebElement myPagesIconAlternative;
 
     @FindBy(xpath = "//a[.='MY PAGES']")
     public WebElement myPagesIconn;

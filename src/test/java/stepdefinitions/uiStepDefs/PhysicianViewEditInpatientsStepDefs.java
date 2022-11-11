@@ -3,7 +3,6 @@ package stepdefinitions.uiStepDefs;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.Select;
 import pages.base.HomePage;
 import pages.physician.PhysicianHomePage;
 import pages.physician.PhysicianMyInPatientPage;
@@ -47,8 +46,8 @@ public class PhysicianViewEditInpatientsStepDefs {
     }
     @When("Doctor clicks on MY PAGES")
     public void doctor_clicks_on_my_pages() {
-        Driver.waitForVisibility(physicianHomePage.myPagesIcon,10);
-        physicianHomePage.myPagesIcon.click();
+        Driver.waitForVisibility(physicianHomePage.myPagesIconAlternative,10);
+        physicianHomePage.myPagesIconAlternative.click();
 
     }
     @Then("Doctor clicks on My inPatients")
