@@ -38,6 +38,8 @@ public class PatientHomePage {
 
     @FindBy(xpath = "//div[@class='Toastify']")
     public static WebElement alertAfterSendAppoRequest;
+    @FindBy(xpath = "//input[@name='username']")
+    public static WebElement physicianUsernameBox;
 
 
 }

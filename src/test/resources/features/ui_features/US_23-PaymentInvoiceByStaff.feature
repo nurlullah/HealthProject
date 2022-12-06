@@ -1,4 +1,4 @@
-@US023-01
+@US023-01 @localtest
 Feature: US023 Payment Invoice By Staff
 
    Background:
@@ -23,30 +23,32 @@ Feature: US023 Payment Invoice By Staff
     And user staff selects pending for appointment status
     And user staff assigns the doctor for the patient as "team02_physician_data"
     And user staff cliks on save button
-#
-#  Scenario: US023-TC003 Kullanici Doktor rolu ile atanan randevunun islemlerini tamamlar
-#    And kullanici doktor rolu ile oturum acar
-#    Then kullanici doktor mypage acilir butonuna tiklar
-#    And kullanici my appointments butonuna tiklar
-#    And kullanici atanan randevunun edit butonuna tiklar
-#    Then kullanici Request A Test butonuna tiklar
-#    And kullanici cccs, Sodium ve Urea testlerini secer
-#    And kullanici test bolumu save butonuna tiklar
-#    Then kullanici status kutusundan completed secenegini secer
-#    And kullanici anamneis, treatment, diagnosis kutularini doldurur
-#    And kullanici create bolumu save butonuna tiklar
-#
-#  Scenario: US023-TC004 kullanici Staff rolu ile islemleri tamamlanan hastaya fatura olusturur
-#    And kullanici staff rolu ile oturum acar
-#    Then kullanici staff mypage acilir butonuna tiklar
-#    And kullanici search patient butonuna tiklar
-#    Then kullanici patient SSN bolumune "426-64-2470" nolu SSN no girer
-#    And kullanici show appointments butonuna tiklar
-#    Then kullanici fatura icin hastanin payment butonuna tiklar
-#    And kullanici create invoice butonuna tiklar
-#    And kullanici create or edit sayfasinda save butonuna tiklar
-#    Then kullanici patient SSN bolumune "426-64-2470" nolu SSN no girer
-#    And kullanici show appointments butonuna tiklar
-#    Then kullanici fatura icin hastanin payment butonuna tiklar
-#    And kullanici show invoice butonuna tiklar
-#    And kullanici faturanin olustugunu dogrular
+
+  @US023-03
+  Scenario: US023-TC003 User physician completes the process for the assigned appointment
+   When user physician signs in as physician
+   Then user physician clicks on MyPages dropdown button
+   And  user physician selects My Appointments from dropdown
+  And user physician clicks on edit button for the assigned appointment
+  Then user physician clicks on Request A Test button
+  And user physician selects cccs, Sodium and Urea tests
+  And user physician clicks on save button on test list section
+  Then user physician selects completed option from status dropdown
+  And user physician selects anamneis, treatment, diagnosis checkboxes
+  And user physician clicks on save button in the Create or Edit an Appointment section
+
+  @US023-04
+ Scenario: US023-TC004 user signs in as Staff to prepare invoice
+    And user signs in as Staff
+    Then user staff clicks on MYPAGE dropdown
+    And user staff clikcs on Search Patient button
+    Then user staff enters patients SSN box "patientSsnBoxValue"
+    And user staff clicks on show appointments button
+  And user staff clicks on payment/invoice process button for the patient
+  And user staff clicks on create invoice button
+  And user Staff clicks on save button on create or edit payment button
+  And user staff enters patients SSN box {string}
+  And user staff clicks on show appointments button
+  And user staff clicks on payment button for the patient
+  And user staff clicks on show invoice button
+  Then user staff verifies that invoice is created

@@ -10,6 +10,7 @@ Feature: Physician related features
       |firstname|lastname|
       |Bilge   |Dede  |
 
+  @smoketest
   @us05_TC06
   Scenario: TC06 When_user_makes_an_appointment_and_registers_they_can_see_their_profiles_and_sign_in_the_app
 

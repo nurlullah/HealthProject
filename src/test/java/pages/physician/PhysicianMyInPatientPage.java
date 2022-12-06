@@ -12,25 +12,33 @@ public class PhysicianMyInPatientPage {
     }
 
     //My Inpatients Page
-
     @FindBy(xpath = "//thead")
     public WebElement allItemsInMyPatientsPage;
+
     @FindBy(xpath = "(//tbody/tr/td)[1]")
     public WebElement ID;
+
     @FindBy(xpath = "(//tbody/tr/td)[2]")
     public WebElement startDate;
+
     @FindBy(xpath = "(//tbody/tr/td)[3]")
     public WebElement endDate;
+
     @FindBy(xpath = "(//tbody/tr/td)[4]")
     public WebElement status;
+
     @FindBy(xpath = "(//tbody/tr/td)[5]")
     public WebElement description;
+
     @FindBy(xpath = "(//tbody/tr/td)[6]")
     public WebElement createdDate;
+
     @FindBy(xpath = "(//tbody/tr/td)[7]")
     public WebElement room;
+
     @FindBy(xpath = "(//tbody/tr/td)[8]")
     public WebElement appointment;
+
     @FindBy(xpath = "(//tbody/tr/td)[9]")
     public WebElement patient;
 
