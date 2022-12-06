@@ -1,3 +1,4 @@
+@smoke_test
 Feature: Registration related features
   Background:
     Given user goes to URL

@@ -1,3 +1,4 @@
+@smoketest
 Feature: US09_Patient_View_Edit_Test
   Background:
     Given User goes to url
@@ -8,6 +9,7 @@ Feature: US09_Patient_View_Edit_Test
     When Click My Pages button and Search Patient dropdown
     And Click ssn of patient and enter ssn number
 
+    @smoketest
   @US09_TC01
   Scenario:US09_TC01_staff_click_view_button
     And Click view button for patient
@@ -16,7 +18,7 @@ Feature: US09_Patient_View_Edit_Test
     Then Verify -THANK YOU FOR CHOOSING US...- text
     Then Close page
 
-
+  @smoketest
   @US09_TC02/1
   Scenario:US09_TC02_staff_edit_id
     And  Click edit button for patient
@@ -28,6 +30,7 @@ Feature: US09_Patient_View_Edit_Test
     Then Verify -THANK YOU FOR CHOOSING US...- text
     Then Close page
 
+  @smoketest
   @US09_TC02/2
   Scenario:US09_TC02_staff_edit_firstname_lastname_vs
     And  Click edit button for patient
@@ -48,6 +51,7 @@ Feature: US09_Patient_View_Edit_Test
     Then Verify -THANK YOU FOR CHOOSING US...- text
     Then Close page
 
+  @smoketest
    @US09_TC02/3
   Scenario:US09_TC02_staff_edit_state_city
     And  Click edit button for patient
@@ -59,6 +63,7 @@ Feature: US09_Patient_View_Edit_Test
     Then Verify -THANK YOU FOR CHOOSING US...- text
     Then Close page
 
+  @smoketest
   @US09_TC02/4
   Scenario:US09_TC02_staff_edit_birth_date
     And  Click edit button for patient
@@ -71,7 +76,7 @@ Feature: US09_Patient_View_Edit_Test
     Then Verify -THANK YOU FOR CHOOSING US...- text
     Then Close page
 
-
+  @smoketest
   @US09_TC03
   Scenario:US09_TC03_staff_see_all_patient_info_populated
     Then Verify all patient info populated.

@@ -1,3 +1,4 @@
+@smoketest
 @PhysicianViewEditInpatients
   Feature: Physician View - Edit Inpatients Page
     Background:
@@ -10,6 +11,7 @@
     And Doctor clicks on MY PAGES
     Then Doctor clicks on My inPatients
 
+    @smoke_test
     @DoctorViewAllItems
     Scenario: Doctor can view all items
     Then Doctor verifies the all items Inpatient is visible in Inpatient page

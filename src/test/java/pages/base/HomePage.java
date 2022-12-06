@@ -32,7 +32,6 @@ public class HomePage {
     @FindBy(css = "#account-menu")//signin olmak ve sonrasında acoount işlemleri için
     public WebElement signInAndAccountIcon;
 
-
     @FindBy(id = "login-item")
     public WebElement signIn;
 
@@ -83,8 +82,6 @@ public class HomePage {
     //Sıradaki 3 locator signIn olduktan sonra çıkan locaterlar
     @FindBy(css = "a[href='/account/settings']")
     public WebElement settingsLink;
-
-
 
     @FindBy(xpath = "//span[text()='Sign out']")
     public WebElement signOut;
